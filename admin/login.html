@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Aezline</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #8b5cf6;
+            --dark-color: #1f2937;
+            --light-color: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #1f2937;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .login-title {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .login-subtitle {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .login-form {
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-check-input {
+            margin-right: 10px;
+        }
+
+        .form-check-label {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .login-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .login-footer a:hover {
+            color: var(--secondary-color);
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-danger {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="login-logo">Aezline</div>
+            <h1 class="login-title">Admin Login</h1>
+            <p class="login-subtitle">Enter your credentials to access the admin panel</p>
+        </div>
+
+        <div class="alert alert-danger" id="error-alert">Invalid username or password. Please try again.</div>
+
+        <form class="login-form" id="login-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="remember-me">
+                <label class="form-check-label" for="remember-me">Remember me</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+
+        <div class="login-footer">
+            <p>Forgot your password? <a href="#">Reset it here</a></p>
+            <p style="margin-top: 10px;">Return to <a href="/">website</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('login-form');
+            const errorAlert = document.getElementById('error-alert');
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                // Show loading state
+                const submitButton = loginForm.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+                submitButton.disabled = true;
+
+                // Simulate API call
+                setTimeout(function() {
+                    // Get custom credentials if they exist
+                    let validUsername = 'admin';
+                    let validPassword = 'admin123';
+
+                    const adminCredentials = localStorage.getItem('adminCredentials');
+                    if (adminCredentials) {
+                        const credentials = JSON.parse(adminCredentials);
+                        validUsername = credentials.username;
+                        validPassword = credentials.password;
+                    }
+
+                    // Client-side authentication
+                    if (username === validUsername && password === validPassword) {
+                        // Store login state in localStorage
+                        localStorage.setItem('adminLoggedIn', 'true');
+
+                        // Log activity
+                        logActivity('login', 'Admin Login', 'Administrator logged in successfully.');
+
+                        // Redirect to admin index
+                        window.location.href = 'index.html';
+                    } else {
+                        // Show error message
+                        errorAlert.style.display = 'block';
+
+                        // Reset button
+                        submitButton.innerHTML = originalButtonText;
+                        submitButton.disabled = false;
+
+                        // Clear password field
+                        document.getElementById('password').value = '';
+                    }
+                }, 1000);
+            });
+
+            // Log activity function
+            function logActivity(type, title, description) {
+                // Create activity object
+                const activity = {
+                    type: type,
+                    icon: 'fa-user-shield',
+                    iconClass: 'icon-primary',
+                    title: title,
+                    description: description,
+                    time: 'Just now'
+                };
+
+                // Load existing activities
+                const savedActivities = localStorage.getItem('activities');
+                const activities = savedActivities ? JSON.parse(savedActivities) : [];
+
+                // Add new activity at the beginning
+                activities.unshift(activity);
+
+                // Limit to 10 activities
+                if (activities.length > 10) {
+                    activities.pop();
+                }
+
+                // Save updated activities
+                localStorage.setItem('activities', JSON.stringify(activities));
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Blog Post - Aezline Admin</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    
+    <!-- Quill Editor CSS -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar" id="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <div class="admin-sidebar-logo">
+                    <img src="../images/logo-white.png" alt="Aezline Logo">
+                    <h2>Aezline</h2>
+                </div>
+                <button class="admin-sidebar-toggle" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="admin-sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog.html" class="active">
+                            <i class="fas fa-blog"></i>
+                            <span>Blog Posts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="media.html">
+                            <i class="fas fa-images"></i>
+                            <span>Media</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="newsletter.html">
+                            <i class="fas fa-envelope"></i>
+                            <span>Newsletter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="admin-sidebar-footer">
+                <a href="#" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-title">
+                    <h1>Add New Blog Post</h1>
+                </div>
+                <div class="admin-header-actions">
+                    <a href="blog.html" class="admin-btn admin-btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Blog Posts
+                    </a>
+                    <div class="admin-user-dropdown" id="user-dropdown">
+                        <div class="admin-user-info">
+                            <div class="admin-user-avatar">A</div>
+                            <div class="admin-user-name">Admin</div>
+                        </div>
+                        <div class="admin-dropdown-menu" id="user-dropdown-menu">
+                            <ul>
+                                <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                                <li class="admin-dropdown-divider"></li>
+                                <li><a href="#" id="dropdown-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <!-- Blog Editor -->
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2 class="admin-card-title">Blog Post Details</h2>
+                    </div>
+                    <div class="admin-card-body">
+                        <div id="blog-alert-container"></div>
+                        
+                        <form id="blog-form" class="admin-blog-editor">
+                            <div class="form-group">
+                                <label for="blog-title">Title</label>
+                                <input type="text" id="blog-title" name="title" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="blog-category">Category</label>
+                                    <select id="blog-category" name="category" required>
+                                        <option value="">Select Category</option>
+                                        <option value="Development">Development</option>
+                                        <option value="Design">Design</option>
+                                        <option value="SEO">SEO</option>
+                                        <option value="Business">Business</option>
+                                        <option value="Marketing">Marketing</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="blog-status">Status</label>
+                                    <select id="blog-status" name="status" required>
+                                        <option value="published">Published</option>
+                                        <option value="draft">Draft</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="blog-excerpt">Excerpt</label>
+                                <textarea id="blog-excerpt" name="excerpt" rows="3" required></textarea>
+                                <div class="form-help">A short summary of the post that will be displayed in blog listings.</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="blog-content">Content</label>
+                                <div id="blog-editor"></div>
+                                <textarea id="blog-content" name="content" style="display: none;"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Featured Image</label>
+                                <div class="image-upload">
+                                    <div class="file-input-wrapper">
+                                        <span class="file-input-btn">Choose Image</span>
+                                        <input type="file" id="blog-image" name="image" accept="image/*">
+                                    </div>
+                                    <div id="image-preview" class="image-preview" style="display: none;">
+                                        <img id="preview-img" src="#" alt="Preview">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="blog-tags">Tags</label>
+                                <div class="tag-input" id="tag-input">
+                                    <input type="text" id="tag-input-field" placeholder="Add a tag and press Enter">
+                                </div>
+                                <div class="form-help">Press Enter to add a tag. Click on a tag to remove it.</div>
+                                <input type="hidden" id="blog-tags" name="tags">
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" id="save-draft-btn" class="admin-btn admin-btn-secondary">Save as Draft</button>
+                                <button type="submit" class="admin-btn admin-btn-primary">Publish Post</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Quill Editor JS -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    
+    <script src="js/admin-auth.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+    <script src="js/admin-blog-editor.js"></script>
+</body>
+</html>

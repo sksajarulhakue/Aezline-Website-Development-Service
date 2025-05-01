@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Aezline</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar" id="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <div class="admin-sidebar-logo">
+                    <img src="../images/logo-white.png" alt="Aezline Logo">
+                    <h2>Aezline</h2>
+                </div>
+                <button class="admin-sidebar-toggle" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="admin-sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="index.html" class="active">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog.html">
+                            <i class="fas fa-blog"></i>
+                            <span>Blog Posts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="media.html">
+                            <i class="fas fa-images"></i>
+                            <span>Media</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="newsletter.html">
+                            <i class="fas fa-envelope"></i>
+                            <span>Newsletter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="settings.html">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="admin-sidebar-footer">
+                <a href="#" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-title">
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="admin-header-actions">
+                    <a href="../index.html" target="_blank" class="admin-btn admin-btn-secondary">
+                        <i class="fas fa-external-link-alt"></i> View Website
+                    </a>
+                    <div class="admin-user-dropdown" id="user-dropdown">
+                        <div class="admin-user-info">
+                            <div class="admin-user-avatar">A</div>
+                            <div class="admin-user-name">Admin</div>
+                        </div>
+                        <div class="admin-dropdown-menu" id="user-dropdown-menu">
+                            <ul>
+                                <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+                                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                                <li class="admin-dropdown-divider"></li>
+                                <li><a href="#" id="dropdown-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <!-- Dashboard Overview -->
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2 class="admin-card-title">Overview</h2>
+                    </div>
+                    <div class="admin-card-body">
+                        <div class="admin-dashboard-stats">
+                            <div class="admin-stat-card">
+                                <div class="admin-stat-icon">
+                                    <i class="fas fa-blog"></i>
+                                </div>
+                                <div class="admin-stat-content">
+                                    <h3 class="admin-stat-value" id="blog-posts-count">3</h3>
+                                    <p class="admin-stat-label">Blog Posts</p>
+                                </div>
+                            </div>
+                            <div class="admin-stat-card">
+                                <div class="admin-stat-icon">
+                                    <i class="fas fa-images"></i>
+                                </div>
+                                <div class="admin-stat-content">
+                                    <h3 class="admin-stat-value" id="media-files-count">12</h3>
+                                    <p class="admin-stat-label">Media Files</p>
+                                </div>
+                            </div>
+                            <div class="admin-stat-card">
+                                <div class="admin-stat-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="admin-stat-content">
+                                    <h3 class="admin-stat-value" id="subscribers-count">24</h3>
+                                    <p class="admin-stat-label">Subscribers</p>
+                                </div>
+                            </div>
+                            <div class="admin-stat-card">
+                                <div class="admin-stat-icon">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <div class="admin-stat-content">
+                                    <h3 class="admin-stat-value" id="total-views-count">1,254</h3>
+                                    <p class="admin-stat-label">Total Views</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Blog Posts -->
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2 class="admin-card-title">Recent Blog Posts</h2>
+                        <div class="admin-card-actions">
+                            <a href="blog.html" class="admin-btn admin-btn-primary">View All</a>
+                        </div>
+                    </div>
+                    <div class="admin-card-body">
+                        <table class="admin-blog-list">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="admin-blog-title">The Critical Role of Web Performance in User Experience and SEO</td>
+                                    <td>Development</td>
+                                    <td>April 15, 2024</td>
+                                    <td><span class="admin-blog-status published">Published</span></td>
+                                    <td class="admin-blog-actions">
+                                        <button class="edit-btn" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="view-btn" title="View"><i class="fas fa-eye"></i></button>
+                                        <button class="delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="admin-blog-title">Designing for Accessibility: Creating Inclusive Web Experiences</td>
+                                    <td>Design</td>
+                                    <td>April 8, 2024</td>
+                                    <td><span class="admin-blog-status published">Published</span></td>
+                                    <td class="admin-blog-actions">
+                                        <button class="edit-btn" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="view-btn" title="View"><i class="fas fa-eye"></i></button>
+                                        <button class="delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="admin-blog-title">Modern JavaScript Frameworks: Choosing the Right Tool for Your Project</td>
+                                    <td>Development</td>
+                                    <td>March 30, 2024</td>
+                                    <td><span class="admin-blog-status published">Published</span></td>
+                                    <td class="admin-blog-actions">
+                                        <button class="edit-btn" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="view-btn" title="View"><i class="fas fa-eye"></i></button>
+                                        <button class="delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2 class="admin-card-title">Quick Actions</h2>
+                    </div>
+                    <div class="admin-card-body">
+                        <div class="admin-quick-actions">
+                            <a href="blog-new.html" class="admin-quick-action-btn">
+                                <i class="fas fa-plus"></i>
+                                <span>Add New Blog Post</span>
+                            </a>
+                            <a href="media-upload.html" class="admin-quick-action-btn">
+                                <i class="fas fa-upload"></i>
+                                <span>Upload Media</span>
+                            </a>
+                            <a href="newsletter-send.html" class="admin-quick-action-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Send Newsletter</span>
+                            </a>
+                            <a href="settings.html" class="admin-quick-action-btn">
+                                <i class="fas fa-cog"></i>
+                                <span>Update Settings</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/admin-auth.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

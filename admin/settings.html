@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Aezline Admin</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #8b5cf6;
+            --dark-color: #1f2937;
+            --light-color: #f8f9fa;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .admin-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .admin-nav li {
+            margin-left: 20px;
+        }
+
+        .admin-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .admin-nav a:hover {
+            opacity: 0.8;
+        }
+
+        .admin-nav a.active {
+            border-bottom: 2px solid white;
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .page-title {
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: var(--dark-color);
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-check-input {
+            margin-right: 10px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #e5e7eb;
+            color: var(--dark-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #d1d5db;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-success {
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--success-color);
+        }
+
+        .alert-danger {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--danger-color);
+        }
+
+        .settings-section {
+            margin-bottom: 30px;
+        }
+
+        .settings-section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .settings-description {
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+
+        .color-picker {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.selected {
+            border-color: var(--dark-color);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .admin-nav {
+                margin-top: 15px;
+            }
+
+            .admin-nav ul {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Aezline Admin</div>
+                <nav class="admin-nav">
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="process-editor.html">Process Steps</a></li>
+                        <li><a href="banner-manager.html">Banner Manager</a></li>
+                        <li><a href="messages.html">Messages</a></li>
+                        <li><a href="settings.html" class="active">Settings</a></li>
+                        <li><a href="../index.html" target="_blank">View Site</a></li>
+                        <li><a href="#" id="logout-btn">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="page-title">Settings</h1>
+
+            <div class="alert alert-success" id="success-alert">Settings saved successfully!</div>
+            <div class="alert alert-danger" id="error-alert" style="display: none;">Error saving settings!</div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">General Settings</h2>
+                </div>
+
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Website Information</h3>
+                    <p class="settings-description">Basic information about your website.</p>
+
+                    <div class="form-group">
+                        <label for="site-title">Website Title</label>
+                        <input type="text" class="form-control" id="site-title" value="Aezline - Website Development Services">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="site-description">Website Description</label>
+                        <textarea class="form-control" id="site-description" rows="3">Professional website development services offering custom solutions for businesses of all sizes.</textarea>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Contact Information</h3>
+                    <p class="settings-description">Your contact details displayed on the website.</p>
+
+                    <div class="form-group">
+                        <label for="contact-email">Email Address</label>
+                        <input type="email" class="form-control" id="contact-email" value="contact@aezline.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-phone">Phone Number</label>
+                        <input type="text" class="form-control" id="contact-phone" value="+1 (123) 456-7890">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-address">Address</label>
+                        <textarea class="form-control" id="contact-address" rows="2">123 Web Developer St, Digital City, 12345</textarea>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Social Media</h3>
+                    <p class="settings-description">Links to your social media profiles.</p>
+
+                    <div class="form-group">
+                        <label for="social-facebook">Facebook</label>
+                        <input type="url" class="form-control" id="social-facebook" value="https://facebook.com/aezline">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="social-twitter">Twitter</label>
+                        <input type="url" class="form-control" id="social-twitter" value="https://twitter.com/aezline">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="social-instagram">Instagram</label>
+                        <input type="url" class="form-control" id="social-instagram" value="https://instagram.com/aezline">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="social-linkedin">LinkedIn</label>
+                        <input type="url" class="form-control" id="social-linkedin" value="https://linkedin.com/company/aezline">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-secondary">Cancel</button>
+                    <button class="btn btn-primary" id="save-settings">Save Settings</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Appearance Settings</h2>
+                </div>
+
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Theme Colors</h3>
+                    <p class="settings-description">Customize the colors used throughout your website.</p>
+
+                    <div class="form-group">
+                        <label>Primary Color</label>
+                        <div class="color-picker">
+                            <div class="color-option selected" style="background-color: #3b82f6;" data-color="#3b82f6"></div>
+                            <div class="color-option" style="background-color: #10b981;" data-color="#10b981"></div>
+                            <div class="color-option" style="background-color: #f59e0b;" data-color="#f59e0b"></div>
+                            <div class="color-option" style="background-color: #ef4444;" data-color="#ef4444"></div>
+                            <div class="color-option" style="background-color: #8b5cf6;" data-color="#8b5cf6"></div>
+                            <div class="color-option" style="background-color: #0ea5e9;" data-color="#0ea5e9"></div>
+                            <div class="color-option" style="background-color: #ec4899;" data-color="#ec4899"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Secondary Color</label>
+                        <div class="color-picker">
+                            <div class="color-option" style="background-color: #3b82f6;" data-color="#3b82f6"></div>
+                            <div class="color-option" style="background-color: #10b981;" data-color="#10b981"></div>
+                            <div class="color-option" style="background-color: #f59e0b;" data-color="#f59e0b"></div>
+                            <div class="color-option" style="background-color: #ef4444;" data-color="#ef4444"></div>
+                            <div class="color-option selected" style="background-color: #8b5cf6;" data-color="#8b5cf6"></div>
+                            <div class="color-option" style="background-color: #0ea5e9;" data-color="#0ea5e9"></div>
+                            <div class="color-option" style="background-color: #ec4899;" data-color="#ec4899"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Dark Mode</h3>
+                    <p class="settings-description">Configure dark mode settings for your website.</p>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="enable-dark-mode" checked>
+                        <label for="enable-dark-mode">Enable Dark Mode Toggle</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="default-dark-mode">
+                        <label for="default-dark-mode">Use Dark Mode by Default</label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-secondary">Cancel</button>
+                    <button class="btn btn-primary" id="save-appearance">Save Appearance</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Advanced Settings</h2>
+                </div>
+
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Data Management</h3>
+                    <p class="settings-description">Export and import your website settings and data.</p>
+
+                    <div class="form-actions" style="margin-bottom: 20px;">
+                        <button class="btn btn-secondary" id="export-data">Export Data</button>
+                        <button class="btn btn-secondary" id="import-data">Import Data</button>
+                        <button class="btn btn-danger" id="clear-data">Clear All Data</button>
+                    </div>
+
+                    <div id="import-container" style="display: none;">
+                        <textarea id="import-data-textarea" class="form-control" rows="5" placeholder="Paste exported data here"></textarea>
+                        <div class="form-actions" style="margin-top: 10px;">
+                            <button class="btn btn-secondary" id="cancel-import">Cancel</button>
+                            <button class="btn btn-primary" id="confirm-import">Import</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Admin Access</h3>
+                    <p class="settings-description">Configure admin access settings for your website.</p>
+
+                    <div class="form-group">
+                        <label for="admin-username">Admin Username</label>
+                        <input type="text" class="form-control" id="admin-username" value="admin">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="admin-password">Admin Password</label>
+                        <input type="password" class="form-control" id="admin-password" value="admin123">
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="enable-keyboard-shortcut" checked>
+                        <label for="enable-keyboard-shortcut">Enable Keyboard Shortcut (Ctrl+Shift+A)</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="enable-corner-click" checked>
+                        <label for="enable-corner-click">Enable Corner Double-Click</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="enable-hash-access" checked>
+                        <label for="enable-hash-access">Enable URL Hash Access (#admin)</label>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3 class="settings-section-title">Performance</h3>
+                    <p class="settings-description">Configure performance settings for your website.</p>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="enable-animations" checked>
+                        <label for="enable-animations">Enable Animations</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="enable-lazy-loading" checked>
+                        <label for="enable-lazy-loading">Enable Lazy Loading for Images</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="enable-preloading">
+                        <label for="enable-preloading">Enable Preloading for Key Resources</label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-secondary">Cancel</button>
+                    <button class="btn btn-primary" id="save-advanced">Save Advanced Settings</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            if (!localStorage.getItem('adminLoggedIn')) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Load saved settings
+            loadSettings();
+
+            // Color picker functionality
+            document.querySelectorAll('.color-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Update selected state in the same color picker
+                    const colorPicker = this.closest('.color-picker');
+                    colorPicker.querySelectorAll('.color-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                });
+            });
+
+            // Save settings button
+            document.getElementById('save-settings').addEventListener('click', function() {
+                // Save general settings
+                const saveSuccess = saveGeneralSettings();
+
+                // Only show success message and log activity if save was successful
+                if (saveSuccess) {
+                    // Show success message
+                    showAlert('success-alert', 'General settings saved successfully!');
+
+                    // Log activity
+                    logActivity('settings', 'General Settings Updated', 'Website information and contact details were updated.');
+                }
+            });
+
+            // Save appearance button
+            document.getElementById('save-appearance').addEventListener('click', function() {
+                // Save appearance settings
+                const saveSuccess = saveAppearanceSettings();
+
+                // Only show success message and log activity if save was successful
+                if (saveSuccess) {
+                    // Show success message
+                    showAlert('success-alert', 'Appearance settings saved successfully!');
+
+                    // Log activity
+                    logActivity('settings', 'Appearance Settings Updated', 'Website colors and theme settings were updated.');
+                }
+            });
+
+            // Save advanced settings button
+            document.getElementById('save-advanced').addEventListener('click', function() {
+                // Save advanced settings
+                const saveSuccess = saveAdvancedSettings();
+
+                // Only show success message and log activity if save was successful
+                if (saveSuccess) {
+                    // Show success message
+                    showAlert('success-alert', 'Advanced settings saved successfully!');
+
+                    // Log activity
+                    logActivity('settings', 'Advanced Settings Updated', 'Admin access and performance settings were updated.');
+                }
+            });
+
+            // Add logout functionality
+            document.getElementById('logout-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('adminLoggedIn');
+                window.location.href = 'login.html';
+            });
+
+            // Data management functionality
+            setupDataManagement();
+        });
+
+        // Load settings from localStorage
+        function loadSettings() {
+            // Load general settings
+            const generalSettings = localStorage.getItem('generalSettings');
+            if (generalSettings) {
+                const settings = JSON.parse(generalSettings);
+
+                // Website information
+                document.getElementById('site-title').value = settings.siteTitle || 'Aezline - Website Development Services';
+                document.getElementById('site-description').value = settings.siteDescription || 'Professional website development services offering custom solutions for businesses of all sizes.';
+
+                // Contact information
+                document.getElementById('contact-email').value = settings.contactEmail || 'contact@aezline.com';
+                document.getElementById('contact-phone').value = settings.contactPhone || '+1 (123) 456-7890';
+                document.getElementById('contact-address').value = settings.contactAddress || '123 Web Developer St, Digital City, 12345';
+
+                // Social media
+                document.getElementById('social-facebook').value = settings.socialFacebook || 'https://facebook.com/aezline';
+                document.getElementById('social-twitter').value = settings.socialTwitter || 'https://twitter.com/aezline';
+                document.getElementById('social-instagram').value = settings.socialInstagram || 'https://instagram.com/aezline';
+                document.getElementById('social-linkedin').value = settings.socialLinkedin || 'https://linkedin.com/company/aezline';
+            }
+
+            // Load appearance settings
+            const appearanceSettings = localStorage.getItem('appearanceSettings');
+            if (appearanceSettings) {
+                const settings = JSON.parse(appearanceSettings);
+
+                // Theme colors
+                const primaryColor = settings.primaryColor || '#3b82f6';
+                const secondaryColor = settings.secondaryColor || '#8b5cf6';
+
+                // Update color pickers
+                updateColorPicker('Primary Color', primaryColor);
+                updateColorPicker('Secondary Color', secondaryColor);
+
+                // Dark mode settings
+                document.getElementById('enable-dark-mode').checked = settings.enableDarkMode !== false; // Default to true
+                document.getElementById('default-dark-mode').checked = settings.defaultDarkMode === true; // Default to false
+            }
+
+            // Load advanced settings
+            const advancedSettings = localStorage.getItem('advancedSettings');
+            if (advancedSettings) {
+                const settings = JSON.parse(advancedSettings);
+
+                // Admin access settings
+                document.getElementById('admin-username').value = settings.adminUsername || 'admin';
+                document.getElementById('admin-password').value = settings.adminPassword || 'admin123';
+                document.getElementById('enable-keyboard-shortcut').checked = settings.enableKeyboardShortcut !== false; // Default to true
+                document.getElementById('enable-corner-click').checked = settings.enableCornerClick !== false; // Default to true
+                document.getElementById('enable-hash-access').checked = settings.enableHashAccess !== false; // Default to true
+
+                // Performance settings
+                document.getElementById('enable-animations').checked = settings.enableAnimations !== false; // Default to true
+                document.getElementById('enable-lazy-loading').checked = settings.enableLazyLoading !== false; // Default to true
+                document.getElementById('enable-preloading').checked = settings.enablePreloading === true; // Default to false
+            }
+        }
+
+        // Save general settings to localStorage
+        function saveGeneralSettings() {
+            // Validate inputs
+            const siteTitle = document.getElementById('site-title').value.trim();
+            const contactEmail = document.getElementById('contact-email').value.trim();
+
+            // Check if title is not empty
+            if (!siteTitle) {
+                showAlert('error-alert', 'Website title cannot be empty!');
+                document.getElementById('site-title').focus();
+                return false;
+            }
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (contactEmail && !emailRegex.test(contactEmail)) {
+                showAlert('error-alert', 'Please enter a valid email address!');
+                document.getElementById('contact-email').focus();
+                return false;
+            }
+
+            const settings = {
+                // Website information
+                siteTitle: siteTitle,
+                siteDescription: document.getElementById('site-description').value.trim(),
+
+                // Contact information
+                contactEmail: contactEmail,
+                contactPhone: document.getElementById('contact-phone').value.trim(),
+                contactAddress: document.getElementById('contact-address').value.trim(),
+
+                // Social media
+                socialFacebook: document.getElementById('social-facebook').value.trim(),
+                socialTwitter: document.getElementById('social-twitter').value.trim(),
+                socialInstagram: document.getElementById('social-instagram').value.trim(),
+                socialLinkedin: document.getElementById('social-linkedin').value.trim()
+            };
+
+            try {
+                // Save to localStorage
+                localStorage.setItem('generalSettings', JSON.stringify(settings));
+
+                // Update website title if viewing in same browser
+                if (window.parent && window.parent.document) {
+                    try {
+                        window.parent.document.title = settings.siteTitle;
+                    } catch (e) {
+                        console.log('Could not update parent window title');
+                    }
+                }
+
+                return true;
+            } catch (error) {
+                console.error('Error saving general settings:', error);
+                showAlert('error-alert', 'Error saving settings: ' + error.message);
+                return false;
+            }
+        }
+
+        // Save appearance settings to localStorage
+        function saveAppearanceSettings() {
+            try {
+                // Get selected colors
+                const primaryColorElement = document.querySelector('.color-picker:nth-of-type(1) .color-option.selected');
+                const secondaryColorElement = document.querySelector('.color-picker:nth-of-type(2) .color-option.selected');
+
+                // Validate color selection
+                if (!primaryColorElement || !secondaryColorElement) {
+                    showAlert('error-alert', 'Please select both primary and secondary colors!');
+                    return false;
+                }
+
+                const primaryColor = primaryColorElement.getAttribute('data-color');
+                const secondaryColor = secondaryColorElement.getAttribute('data-color');
+
+                // Validate color format
+                const colorRegex = /^#[0-9A-Fa-f]{6}$/;
+                if (!colorRegex.test(primaryColor) || !colorRegex.test(secondaryColor)) {
+                    showAlert('error-alert', 'Invalid color format detected!');
+                    return false;
+                }
+
+                const settings = {
+                    // Theme colors
+                    primaryColor: primaryColor,
+                    secondaryColor: secondaryColor,
+
+                    // Dark mode settings
+                    enableDarkMode: document.getElementById('enable-dark-mode').checked,
+                    defaultDarkMode: document.getElementById('default-dark-mode').checked
+                };
+
+                // Save to localStorage
+                localStorage.setItem('appearanceSettings', JSON.stringify(settings));
+
+                // Apply settings to current page for preview
+                applyAppearanceSettings(settings);
+
+                return true;
+            } catch (error) {
+                console.error('Error saving appearance settings:', error);
+                showAlert('error-alert', 'Error saving settings: ' + error.message);
+                return false;
+            }
+        }
+
+        // Apply appearance settings to the page
+        function applyAppearanceSettings(settings) {
+            // Create or update CSS variables
+            let styleElement = document.getElementById('dynamic-styles');
+            if (!styleElement) {
+                styleElement = document.createElement('style');
+                styleElement.id = 'dynamic-styles';
+                document.head.appendChild(styleElement);
+            }
+
+            styleElement.textContent = `
+                :root {
+                    --primary-color: ${settings.primaryColor};
+                    --secondary-color: ${settings.secondaryColor};
+                }
+            `;
+        }
+
+        // Save advanced settings to localStorage
+        function saveAdvancedSettings() {
+            // Validate admin credentials
+            const adminUsername = document.getElementById('admin-username').value.trim();
+            const adminPassword = document.getElementById('admin-password').value.trim();
+
+            // Check if username and password are not empty
+            if (!adminUsername) {
+                showAlert('error-alert', 'Username cannot be empty!');
+                document.getElementById('admin-username').focus();
+                return false;
+            }
+
+            if (!adminPassword) {
+                showAlert('error-alert', 'Password cannot be empty!');
+                document.getElementById('admin-password').focus();
+                return false;
+            }
+
+            // Minimum password length
+            if (adminPassword.length < 6) {
+                showAlert('error-alert', 'Password must be at least 6 characters long!');
+                document.getElementById('admin-password').focus();
+                return false;
+            }
+
+            const settings = {
+                // Admin access settings
+                adminUsername: adminUsername,
+                adminPassword: adminPassword,
+                enableKeyboardShortcut: document.getElementById('enable-keyboard-shortcut').checked,
+                enableCornerClick: document.getElementById('enable-corner-click').checked,
+                enableHashAccess: document.getElementById('enable-hash-access').checked,
+
+                // Performance settings
+                enableAnimations: document.getElementById('enable-animations').checked,
+                enableLazyLoading: document.getElementById('enable-lazy-loading').checked,
+                enablePreloading: document.getElementById('enable-preloading').checked
+            };
+
+            // Save to localStorage
+            localStorage.setItem('advancedSettings', JSON.stringify(settings));
+
+            // Update admin credentials
+            if (settings.adminUsername !== 'admin' || settings.adminPassword !== 'admin123') {
+                // Store the new credentials
+                localStorage.setItem('adminCredentials', JSON.stringify({
+                    username: settings.adminUsername,
+                    password: settings.adminPassword
+                }));
+            }
+
+            return true;
+        }
+
+        // Update color picker selection
+        function updateColorPicker(label, color) {
+            // Find the color picker by its label
+            const labelElements = Array.from(document.querySelectorAll('label'));
+            const labelElement = labelElements.find(el => el.textContent === label);
+
+            if (labelElement) {
+                const colorPicker = labelElement.nextElementSibling;
+                if (colorPicker && colorPicker.classList.contains('color-picker')) {
+                    // Remove selected class from all options
+                    colorPicker.querySelectorAll('.color-option').forEach(option => {
+                        option.classList.remove('selected');
+
+                        // Add selected class to matching color
+                        if (option.getAttribute('data-color') === color) {
+                            option.classList.add('selected');
+                        }
+                    });
+                }
+            }
+        }
+
+        // Show alert message
+        function showAlert(alertId, message) {
+            const alert = document.getElementById(alertId);
+            alert.textContent = message;
+            alert.style.display = 'block';
+
+            // Hide after 3 seconds
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 3000);
+        }
+
+        // Log activity
+        function logActivity(type, title, description) {
+            // Create activity object
+            const activity = {
+                type: type,
+                icon: 'fa-cog',
+                iconClass: 'icon-primary',
+                title: title,
+                description: description,
+                time: 'Just now'
+            };
+
+            // Load existing activities
+            const savedActivities = localStorage.getItem('activities');
+            const activities = savedActivities ? JSON.parse(savedActivities) : [];
+
+            // Add new activity at the beginning
+            activities.unshift(activity);
+
+            // Limit to 10 activities
+            if (activities.length > 10) {
+                activities.pop();
+            }
+
+            // Save updated activities
+            localStorage.setItem('activities', JSON.stringify(activities));
+        }
+
+        // Setup data management functionality
+        function setupDataManagement() {
+            // Export data button
+            document.getElementById('export-data').addEventListener('click', function() {
+                exportData();
+            });
+
+            // Import data button
+            document.getElementById('import-data').addEventListener('click', function() {
+                // Show import container
+                document.getElementById('import-container').style.display = 'block';
+                document.getElementById('import-data-textarea').focus();
+            });
+
+            // Cancel import button
+            document.getElementById('cancel-import').addEventListener('click', function() {
+                // Hide import container
+                document.getElementById('import-container').style.display = 'none';
+                document.getElementById('import-data-textarea').value = '';
+            });
+
+            // Confirm import button
+            document.getElementById('confirm-import').addEventListener('click', function() {
+                importData();
+            });
+
+            // Clear data button
+            document.getElementById('clear-data').addEventListener('click', function() {
+                if (confirm('Are you sure you want to clear all website data? This action cannot be undone.')) {
+                    clearAllData();
+                }
+            });
+        }
+
+        // Export all data from localStorage
+        function exportData() {
+            try {
+                // Collect all data from localStorage
+                const data = {};
+                const keysToExport = [
+                    'generalSettings',
+                    'appearanceSettings',
+                    'advancedSettings',
+                    'adminCredentials',
+                    'activities',
+                    'contactMessages',
+                    'processSteps',
+                    'bannerImages'
+                ];
+
+                keysToExport.forEach(key => {
+                    const value = localStorage.getItem(key);
+                    if (value) {
+                        data[key] = JSON.parse(value);
+                    }
+                });
+
+                // Convert to JSON string
+                const jsonData = JSON.stringify(data, null, 2);
+
+                // Create a download link
+                const blob = new Blob([jsonData], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'aezline-website-data.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                // Show success message
+                showAlert('success-alert', 'Data exported successfully!');
+
+                // Log activity
+                logActivity('export', 'Data Exported', 'Website data was exported to a JSON file.');
+            } catch (error) {
+                console.error('Error exporting data:', error);
+                showAlert('error-alert', 'Error exporting data: ' + error.message);
+            }
+        }
+
+        // Import data from JSON
+        function importData() {
+            try {
+                // Get JSON data from textarea
+                const jsonData = document.getElementById('import-data-textarea').value;
+                if (!jsonData) {
+                    showAlert('error-alert', 'Please paste exported data into the textarea!');
+                    return;
+                }
+
+                // Parse JSON data
+                const data = JSON.parse(jsonData);
+
+                // Validate data structure
+                if (!data || typeof data !== 'object') {
+                    showAlert('error-alert', 'Invalid data format!');
+                    return;
+                }
+
+                // Import data to localStorage
+                Object.keys(data).forEach(key => {
+                    localStorage.setItem(key, JSON.stringify(data[key]));
+                });
+
+                // Hide import container
+                document.getElementById('import-container').style.display = 'none';
+                document.getElementById('import-data-textarea').value = '';
+
+                // Show success message
+                showAlert('success-alert', 'Data imported successfully! Reloading page...');
+
+                // Log activity
+                logActivity('import', 'Data Imported', 'Website data was imported from a JSON file.');
+
+                // Reload page after a short delay
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
+            } catch (error) {
+                console.error('Error importing data:', error);
+                showAlert('error-alert', 'Error importing data: ' + error.message);
+            }
+        }
+
+        // Clear all data from localStorage
+        function clearAllData() {
+            try {
+                // Save admin credentials before clearing
+                const adminLoggedIn = localStorage.getItem('adminLoggedIn');
+                const adminCredentials = localStorage.getItem('adminCredentials');
+
+                // Clear localStorage
+                localStorage.clear();
+
+                // Restore admin credentials so user doesn't get logged out
+                if (adminLoggedIn) {
+                    localStorage.setItem('adminLoggedIn', adminLoggedIn);
+                }
+                if (adminCredentials) {
+                    localStorage.setItem('adminCredentials', adminCredentials);
+                }
+
+                // Show success message
+                showAlert('success-alert', 'All data cleared successfully! Reloading page...');
+
+                // Log activity (this will be the first activity in the new log)
+                logActivity('clear', 'Data Cleared', 'All website data was cleared.');
+
+                // Reload page after a short delay
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
+            } catch (error) {
+                console.error('Error clearing data:', error);
+                showAlert('error-alert', 'Error clearing data: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>

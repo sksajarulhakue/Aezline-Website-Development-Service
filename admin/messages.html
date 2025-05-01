@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Messages - Aezline Admin</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #8b5cf6;
+            --dark-color: #1f2937;
+            --light-color: #f8f9fa;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .admin-nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .admin-nav li {
+            margin-left: 20px;
+        }
+        
+        .admin-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .admin-nav a:hover {
+            opacity: 0.8;
+        }
+        
+        .admin-nav a.active {
+            border-bottom: 2px solid white;
+        }
+        
+        main {
+            padding: 40px 0;
+        }
+        
+        .page-title {
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: var(--dark-color);
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: #e5e7eb;
+            color: var(--dark-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #d1d5db;
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .alert-success {
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--success-color);
+        }
+        
+        .alert-danger {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--danger-color);
+        }
+        
+        .message-list {
+            list-style: none;
+        }
+        
+        .message-item {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .message-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+            cursor: pointer;
+        }
+        
+        .message-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .message-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .status-unread {
+            background-color: var(--primary-color);
+        }
+        
+        .status-read {
+            background-color: #9ca3af;
+        }
+        
+        .message-sender {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-right: 15px;
+        }
+        
+        .message-subject {
+            color: #4b5563;
+            font-weight: 500;
+        }
+        
+        .message-date {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        .message-content {
+            padding: 20px;
+            display: none;
+        }
+        
+        .message-body {
+            margin-bottom: 20px;
+            color: #4b5563;
+            white-space: pre-line;
+        }
+        
+        .message-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .message-expanded .message-content {
+            display: block;
+        }
+        
+        .message-expanded .message-header {
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 50px 0;
+            color: #6b7280;
+        }
+        
+        .empty-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #9ca3af;
+        }
+        
+        .empty-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #4b5563;
+        }
+        
+        .empty-description {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow: auto;
+            padding: 50px 0;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: #9ca3af;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: var(--danger-color);
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .admin-nav {
+                margin-top: 15px;
+            }
+            
+            .admin-nav ul {
+                justify-content: center;
+            }
+            
+            .message-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .message-date {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Aezline Admin</div>
+                <nav class="admin-nav">
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="process-editor.html">Process Steps</a></li>
+                        <li><a href="banner-manager.html">Banner Manager</a></li>
+                        <li><a href="messages.html" class="active">Messages</a></li>
+                        <li><a href="settings.html">Settings</a></li>
+                        <li><a href="../index.html" target="_blank">View Site</a></li>
+                        <li><a href="#" id="logout-btn">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <h1 class="page-title">Contact Messages</h1>
+            
+            <div class="alert alert-success" id="success-alert">Message marked as read!</div>
+            <div class="alert alert-danger" id="error-alert">Error processing message. Please try again.</div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Inbox</h2>
+                    <div>
+                        <button class="btn btn-primary" id="refresh-btn">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                        <button class="btn btn-secondary" id="add-demo-btn">
+                            <i class="fas fa-plus"></i> Add Demo Message
+                        </button>
+                    </div>
+                </div>
+                
+                <ul class="message-list" id="message-list">
+                    <!-- Messages will be loaded dynamically -->
+                </ul>
+                
+                <div class="empty-state" id="empty-state">
+                    <div class="empty-icon">
+                        <i class="fas fa-inbox"></i>
+                    </div>
+                    <h3 class="empty-title">No messages yet</h3>
+                    <p class="empty-description">When visitors send messages through your contact form, they will appear here.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Reply Modal -->
+    <div class="modal" id="reply-modal">
+        <div class="modal-content">
+            <div class="modal-close" id="modal-close">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2 class="modal-title">Reply to Message</h2>
+            
+            <form id="reply-form">
+                <input type="hidden" id="reply-id">
+                
+                <div class="form-group">
+                    <label for="reply-to">To</label>
+                    <input type="email" class="form-control" id="reply-to" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reply-subject">Subject</label>
+                    <input type="text" class="form-control" id="reply-subject">
+                </div>
+                
+                <div class="form-group">
+                    <label for="reply-message">Message</label>
+                    <textarea class="form-control" id="reply-message" placeholder="Type your reply here..."></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-reply">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Send Reply</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Messages Data
+        const messagesData = {
+            messages: []
+        };
+        
+        // Initialize Messages
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            if (!localStorage.getItem('adminLoggedIn')) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Load messages
+            loadMessages();
+            
+            // Initialize modal
+            initModal();
+            
+            // Refresh button
+            document.getElementById('refresh-btn').addEventListener('click', loadMessages);
+            
+            // Add demo message button
+            document.getElementById('add-demo-btn').addEventListener('click', addDemoMessage);
+            
+            // Add logout functionality
+            document.getElementById('logout-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('adminLoggedIn');
+                window.location.href = 'login.html';
+            });
+        });
+        
+        // Load messages
+        function loadMessages() {
+            const messageList = document.getElementById('message-list');
+            const emptyState = document.getElementById('empty-state');
+            
+            // Load messages from localStorage if available
+            const savedMessages = localStorage.getItem('contactMessages');
+            const messages = savedMessages ? JSON.parse(savedMessages) : messagesData.messages;
+            
+            // Update message count in dashboard data
+            updateMessageCount(messages.length);
+            
+            // Clear message list
+            messageList.innerHTML = '';
+            
+            // Check if there are messages
+            if (messages.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            // Hide empty state
+            emptyState.style.display = 'none';
+            
+            // Sort messages by date (newest first)
+            messages.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Display messages
+            messages.forEach(message => {
+                const messageItem = createMessageItem(message);
+                messageList.appendChild(messageItem);
+            });
+        }
+        
+        // Create message item element
+        function createMessageItem(message) {
+            const messageItem = document.createElement('li');
+            messageItem.className = 'message-item';
+            messageItem.dataset.id = message.id;
+            
+            const statusClass = message.read ? 'status-read' : 'status-unread';
+            
+            messageItem.innerHTML = `
+                <div class="message-header">
+                    <div class="message-info">
+                        <div class="message-status ${statusClass}"></div>
+                        <div class="message-sender">${message.name}</div>
+                        <div class="message-subject">${message.subject}</div>
+                    </div>
+                    <div class="message-date">${formatDate(message.date)}</div>
+                </div>
+                <div class="message-content">
+                    <div class="message-body">${message.message}</div>
+                    <div class="message-actions">
+                        <button class="btn btn-secondary reply-btn" data-id="${message.id}">Reply</button>
+                        <button class="btn btn-danger delete-btn" data-id="${message.id}">Delete</button>
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners
+            messageItem.querySelector('.message-header').addEventListener('click', function() {
+                toggleMessage(messageItem, message.id);
+            });
+            
+            messageItem.querySelector('.reply-btn').addEventListener('click', function(e) {
+                e.stopPropagation();
+                openReplyModal(message.id);
+            });
+            
+            messageItem.querySelector('.delete-btn').addEventListener('click', function(e) {
+                e.stopPropagation();
+                deleteMessage(message.id);
+            });
+            
+            return messageItem;
+        }
+        
+        // Toggle message open/close
+        function toggleMessage(messageItem, id) {
+            // Toggle expanded class
+            messageItem.classList.toggle('message-expanded');
+            
+            // If opening the message, mark as read
+            if (messageItem.classList.contains('message-expanded')) {
+                markAsRead(id);
+            }
+        }
+        
+        // Mark message as read
+        function markAsRead(id) {
+            // Load messages
+            const savedMessages = localStorage.getItem('contactMessages');
+            const messages = savedMessages ? JSON.parse(savedMessages) : messagesData.messages;
+            
+            // Find message
+            const messageIndex = messages.findIndex(message => message.id === id);
+            if (messageIndex === -1) return;
+            
+            // If already read, do nothing
+            if (messages[messageIndex].read) return;
+            
+            // Mark as read
+            messages[messageIndex].read = true;
+            
+            // Update status indicator
+            const messageItem = document.querySelector(`.message-item[data-id="${id}"]`);
+            if (messageItem) {
+                const statusIndicator = messageItem.querySelector('.message-status');
+                statusIndicator.classList.remove('status-unread');
+                statusIndicator.classList.add('status-read');
+            }
+            
+            // Save updated messages
+            localStorage.setItem('contactMessages', JSON.stringify(messages));
+            
+            // Log activity
+            logActivity('read', 'Message Read', `Message from ${messages[messageIndex].name} was marked as read.`);
+        }
+        
+        // Delete message
+        function deleteMessage(id) {
+            if (!confirm('Are you sure you want to delete this message?')) return;
+            
+            // Load messages
+            const savedMessages = localStorage.getItem('contactMessages');
+            const messages = savedMessages ? JSON.parse(savedMessages) : messagesData.messages;
+            
+            // Find message
+            const messageIndex = messages.findIndex(message => message.id === id);
+            if (messageIndex === -1) return;
+            
+            const deletedMessage = messages[messageIndex];
+            
+            // Remove message
+            messages.splice(messageIndex, 1);
+            
+            // Save updated messages
+            localStorage.setItem('contactMessages', JSON.stringify(messages));
+            
+            // Update message count
+            updateMessageCount(messages.length);
+            
+            // Reload messages
+            loadMessages();
+            
+            // Show success message
+            showAlert('success-alert', 'Message deleted successfully!');
+            
+            // Log activity
+            logActivity('delete', 'Message Deleted', `Message from ${deletedMessage.name} was deleted.`);
+        }
+        
+        // Initialize modal
+        function initModal() {
+            const modal = document.getElementById('reply-modal');
+            const closeBtn = document.getElementById('modal-close');
+            const cancelBtn = document.getElementById('cancel-reply');
+            const replyForm = document.getElementById('reply-form');
+            
+            // Close modal
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+            
+            closeBtn.addEventListener('click', closeModal);
+            cancelBtn.addEventListener('click', closeModal);
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Submit form
+            replyForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                sendReply();
+            });
+        }
+        
+        // Open reply modal
+        function openReplyModal(id) {
+            // Load messages
+            const savedMessages = localStorage.getItem('contactMessages');
+            const messages = savedMessages ? JSON.parse(savedMessages) : messagesData.messages;
+            
+            // Find message
+            const message = messages.find(message => message.id === id);
+            if (!message) return;
+            
+            // Fill form
+            document.getElementById('reply-id').value = message.id;
+            document.getElementById('reply-to').value = message.email;
+            document.getElementById('reply-subject').value = `Re: ${message.subject}`;
+            document.getElementById('reply-message').value = `\n\n--------------------\nOriginal message:\n${message.message}`;
+            
+            // Show modal
+            document.getElementById('reply-modal').style.display = 'block';
+        }
+        
+        // Send reply
+        function sendReply() {
+            const id = document.getElementById('reply-id').value;
+            const email = document.getElementById('reply-to').value;
+            const subject = document.getElementById('reply-subject').value;
+            const message = document.getElementById('reply-message').value;
+            
+            // In a real application, this would send an email
+            // For demo purposes, we'll just log it
+            console.log('Sending reply:', { id, email, subject, message });
+            
+            // Close modal
+            document.getElementById('reply-modal').style.display = 'none';
+            
+            // Show success message
+            showAlert('success-alert', 'Reply sent successfully!');
+            
+            // Log activity
+            logActivity('reply', 'Reply Sent', `Reply sent to ${email}.`);
+        }
+        
+        // Add demo message
+        function addDemoMessage() {
+            // Create demo message
+            const demoMessage = {
+                id: Date.now(),
+                name: 'John Doe',
+                email: 'john.doe@example.com',
+                subject: 'Website Development Inquiry',
+                message: 'Hello,\n\nI am interested in your website development services. Could you please provide more information about your packages and pricing?\n\nThank you,\nJohn Doe',
+                date: new Date().toISOString(),
+                read: false
+            };
+            
+            // Load existing messages
+            const savedMessages = localStorage.getItem('contactMessages');
+            const messages = savedMessages ? JSON.parse(savedMessages) : messagesData.messages;
+            
+            // Add new message
+            messages.push(demoMessage);
+            
+            // Save updated messages
+            localStorage.setItem('contactMessages', JSON.stringify(messages));
+            
+            // Update message count
+            updateMessageCount(messages.length);
+            
+            // Reload messages
+            loadMessages();
+            
+            // Show success message
+            showAlert('success-alert', 'Demo message added successfully!');
+            
+            // Log activity
+            logActivity('new', 'New Message', 'A new message was received from John Doe.');
+        }
+        
+        // Update message count in dashboard data
+        function updateMessageCount(count) {
+            // Load dashboard data
+            const savedData = localStorage.getItem('dashboardData');
+            const dashboardData = savedData ? JSON.parse(savedData) : {
+                processSteps: 7,
+                bannerImages: 4,
+                contactMessages: 0,
+                visitors: 152
+            };
+            
+            // Update message count
+            dashboardData.contactMessages = count;
+            
+            // Save updated data
+            localStorage.setItem('dashboardData', JSON.stringify(dashboardData));
+        }
+        
+        // Log activity
+        function logActivity(type, title, description) {
+            // Create activity object
+            const activity = {
+                type: type,
+                icon: type === 'new' ? 'fa-envelope' : type === 'read' ? 'fa-envelope-open' : type === 'reply' ? 'fa-reply' : 'fa-trash',
+                iconClass: type === 'new' ? 'icon-warning' : type === 'read' ? 'icon-primary' : type === 'reply' ? 'icon-success' : 'icon-danger',
+                title: title,
+                description: description,
+                time: 'Just now'
+            };
+            
+            // Load existing activities
+            const savedActivities = localStorage.getItem('activities');
+            const activities = savedActivities ? JSON.parse(savedActivities) : [];
+            
+            // Add new activity at the beginning
+            activities.unshift(activity);
+            
+            // Limit to 10 activities
+            if (activities.length > 10) {
+                activities.pop();
+            }
+            
+            // Save updated activities
+            localStorage.setItem('activities', JSON.stringify(activities));
+        }
+        
+        // Show alert
+        function showAlert(alertId, message) {
+            const alert = document.getElementById(alertId);
+            alert.textContent = message;
+            alert.style.display = 'block';
+            
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffSec = Math.floor(diffMs / 1000);
+            const diffMin = Math.floor(diffSec / 60);
+            const diffHour = Math.floor(diffMin / 60);
+            const diffDay = Math.floor(diffHour / 24);
+            
+            if (diffDay > 0) {
+                return date.toLocaleDateString();
+            } else if (diffHour > 0) {
+                return `${diffHour} hour${diffHour > 1 ? 's' : ''} ago`;
+            } else if (diffMin > 0) {
+                return `${diffMin} minute${diffMin > 1 ? 's' : ''} ago`;
+            } else {
+                return 'Just now';
+            }
+        }
+    </script>
+</body>
+</html>

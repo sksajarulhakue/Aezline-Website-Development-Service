@@ -1,0 +1,47 @@
+ADMIN ACCESS GUIDE
+=================
+
+This is a private guide for accessing the admin panel of your website.
+Keep this information secure and do not share it with unauthorized users.
+
+SECURE ACCESS METHODS
+--------------------
+
+1. KEYBOARD SHORTCUT:
+   - Press Ctrl+Shift+A from any page on your website
+   - This will open the admin login popup
+   - Enter your credentials to access the admin dashboard
+
+2. DOUBLE-CLICK CORNER:
+   - Double-click the bottom-right corner of any page
+   - This will open the admin login popup directly
+   - Enter your credentials to access the admin dashboard
+
+3. URL HASH:
+   - Add #admin to the end of any page URL
+   - For example: yourwebsite.com/index.html#admin
+   - This will open the admin login popup directly
+   - Enter your credentials to access the admin dashboard
+
+4. DIRECT URL ACCESS:
+   - Navigate directly to the admin login page:
+   - yourwebsite.com/admin/login.html
+   - Enter your credentials to access the admin dashboard
+
+5. BOOKMARK:
+   - After logging in once, bookmark the admin dashboard URL
+   - This provides the fastest access for future visits
+
+LOGIN CREDENTIALS
+----------------
+Username: admin
+Password: admin123
+
+SECURITY NOTES
+-------------
+- The admin button is hidden from regular visitors
+- Only you know the access methods listed above
+- All admin pages are protected by username/password authentication
+- Always log out when you're done to protect your admin access
+
+If you forget these access methods, refer back to this guide.

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Steps Editor - Admin Panel</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #8b5cf6;
+            --dark-color: #1f2937;
+            --light-color: #f8f9fa;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .admin-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .admin-nav li {
+            margin-left: 20px;
+        }
+
+        .admin-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .admin-nav a:hover {
+            opacity: 0.8;
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .page-title {
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: var(--dark-color);
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #e5e7eb;
+            color: var(--dark-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #d1d5db;
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .process-step-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .process-step-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            margin-right: 15px;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .step-icon {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .step-description {
+            margin-bottom: 15px;
+            color: #4b5563;
+            font-size: 0.9rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .step-highlight {
+            background-color: rgba(59, 130, 246, 0.05);
+            border-left: 3px solid var(--primary-color);
+            padding: 10px;
+            border-radius: 0 5px 5px 0;
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .step-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .edit-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-success {
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--success-color);
+        }
+
+        .alert-danger {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--danger-color);
+        }
+
+        .icon-picker {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #d1d5db;
+        }
+
+        .icon-option {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .icon-option:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        .icon-option.selected {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .admin-nav {
+                margin-top: 15px;
+            }
+
+            .admin-nav ul {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Aezline Admin</div>
+                <nav class="admin-nav">
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="process-editor.html" class="active">Process Steps</a></li>
+                        <li><a href="settings.html">Settings</a></li>
+                        <li><a href="../index.html" target="_blank">View Site</a></li>
+                        <li><a href="#" id="logout-btn">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="page-title">Website Development Process Editor</h1>
+
+            <div class="alert alert-success" id="success-alert">Changes saved successfully!</div>
+            <div class="alert alert-danger" id="error-alert">Error saving changes. Please try again.</div>
+
+            <div style="background-color: rgba(59, 130, 246, 0.1); border-left: 4px solid #3b82f6; padding: 15px; margin-bottom: 20px; border-radius: 0 5px 5px 0;">
+                <strong>Note:</strong> Changes made here will be immediately reflected on the main website. The process steps are stored in your browser's localStorage, so they will persist across sessions until the browser data is cleared.
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Process Steps</h2>
+                    <div>
+                        <a href="../index.html#process" target="_blank" class="btn btn-success" style="margin-right: 10px;">
+                            <i class="fas fa-eye"></i> View on Website
+                        </a>
+                        <button class="btn btn-danger" id="reset-btn" style="margin-right: 10px;">
+                            <i class="fas fa-undo"></i> Reset to Default
+                        </button>
+                        <button class="btn btn-primary" id="refresh-btn">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="process-steps" id="process-steps-container">
+                    <!-- Process steps will be loaded here dynamically -->
+                    <div class="loading">Loading process steps...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            if (!localStorage.getItem('adminLoggedIn')) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Load process steps
+            loadProcessSteps();
+
+            // Refresh button
+            document.getElementById('refresh-btn').addEventListener('click', function() {
+                loadProcessSteps();
+                // Log activity
+                logActivity('refresh', 'Process Steps Refreshed', 'The process steps were refreshed.');
+            });
+
+            // Reset button
+            document.getElementById('reset-btn').addEventListener('click', function() {
+                if (confirm('Are you sure you want to reset all process steps to default? This will discard all your changes.')) {
+                    // Reset to default
+                    localStorage.setItem('processSteps', JSON.stringify(defaultProcessSteps));
+
+                    // Reload process steps
+                    loadProcessSteps();
+
+                    // Show success message
+                    const successAlert = document.getElementById('success-alert');
+                    successAlert.textContent = 'Process steps reset to default successfully!';
+                    successAlert.style.display = 'block';
+                    setTimeout(() => {
+                        successAlert.style.display = 'none';
+                    }, 3000);
+
+                    // Log activity
+                    logActivity('reset', 'Process Steps Reset', 'The process steps were reset to default values.');
+                }
+            });
+
+            // Add logout functionality
+            document.getElementById('logout-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                // Log activity
+                logActivity('logout', 'Admin Logout', 'Administrator logged out of the system.');
+                localStorage.removeItem('adminLoggedIn');
+                window.location.href = 'login.html';
+            });
+        });
+
+        // Function to log activity
+        function logActivity(type, title, description) {
+            // Create activity object
+            const activity = {
+                type: type,
+                icon: type === 'edit' ? 'fa-edit' :
+                      type === 'view' ? 'fa-eye' :
+                      type === 'refresh' ? 'fa-sync-alt' :
+                      type === 'reset' ? 'fa-undo' :
+                      type === 'logout' ? 'fa-sign-out-alt' : 'fa-info-circle',
+                iconClass: type === 'edit' ? 'icon-primary' :
+                           type === 'view' ? 'icon-success' :
+                           type === 'refresh' ? 'icon-warning' :
+                           type === 'reset' ? 'icon-danger' :
+                           type === 'logout' ? 'icon-danger' : 'icon-primary',
+                title: title,
+                description: description,
+                time: 'Just now'
+            };
+
+            // Load existing activities
+            const savedActivities = localStorage.getItem('activities');
+            const activities = savedActivities ? JSON.parse(savedActivities) : [];
+
+            // Add new activity at the beginning
+            activities.unshift(activity);
+
+            // Limit to 10 activities
+            if (activities.length > 10) {
+                activities.pop();
+            }
+
+            // Save updated activities
+            localStorage.setItem('activities', JSON.stringify(activities));
+        }
+
+        // Default process steps data
+        const defaultProcessSteps = [
+            {
+                id: 1,
+                title: "Initial Planning & Client Meeting",
+                description: "Every successful project begins with understanding your unique vision. We conduct an in-depth discovery session to uncover your business goals, target audience, and competitive landscape. This strategic foundation ensures we build not just a website, but a powerful digital asset for your business.",
+                highlight: "We'll explore your specific requirements for website type (corporate, e-commerce, portfolio), essential functionality, design preferences, and content strategy to create a comprehensive project roadmap.",
+                icon: "fa-handshake"
+            },
+            {
+                id: 2,
+                title: "Pricing, Packages & Budget Discussion",
+                description: "We believe in complete transparency when it comes to project costs. After analyzing your requirements, we'll present tailored pricing options that align with your budget while delivering maximum value. Our flexible approach includes both standardized packages and fully customized solutions to perfectly match your project scope.",
+                highlight: "You'll receive a comprehensive proposal with detailed cost breakdown, project timeline with key milestones, and specific deliverables—ensuring you have complete clarity before making any commitment.",
+                icon: "fa-file-invoice-dollar"
+            },
+            {
+                id: 3,
+                title: "Design Preview After Deal Confirmation",
+                description: "Following proposal approval, our creative team transforms your vision into stunning visual concepts. We craft detailed mockups of your website's user interface, information architecture, and key page layouts. This critical design phase establishes the visual foundation for your entire digital presence, ensuring aesthetic appeal and optimal user experience.",
+                highlight: "This collaborative stage includes up to two rounds of revisions based on your feedback, allowing us to refine colors, typography, imagery, and layout until the design perfectly captures your brand identity and project goals.",
+                icon: "fa-paint-brush"
+            },
+            {
+                id: 4,
+                title: "Advance Payment (50%) to Start Project",
+                description: "With designs approved, we formalize our partnership through a 50% advance payment of the total project cost. This initial investment secures your place in our development schedule and allows us to allocate the necessary technical resources to your project. Our fair payment structure balances commitment while protecting your investment.",
+                highlight: "We offer multiple secure payment methods including bank transfer, major credit cards, and digital payment platforms. You'll receive a detailed invoice and payment confirmation for your financial records and project documentation.",
+                icon: "fa-money-check-alt"
+            },
+            {
+                id: 5,
+                title: "Website Development & Demo Preview",
+                description: "This is where your website truly comes to life. Our expert development team transforms approved designs into a fully functional website using clean, efficient code and industry best practices. We meticulously implement all features, content management systems, responsive layouts, and integrations while optimizing for performance, security, and search engines.",
+                highlight: "Upon completion of the development phase, you'll receive access to a private staging environment where you can thoroughly test all functionality, review content, and experience your website exactly as it will appear to your visitors before it goes live.",
+                icon: "fa-laptop-code"
+            },
+            {
+                id: 6,
+                title: "Final Approval & Remaining Payment (50%)",
+                description: "After your thorough review of the staging site and implementation of any final adjustments, we'll request the remaining 50% payment to complete the project. This balanced payment structure ensures your complete satisfaction before the project concludes. Once payment is received, we prepare for the exciting launch phase of your new digital presence.",
+                highlight: "Our technical team handles the entire deployment process, including domain configuration, SSL certificate installation, server optimization, and final quality assurance testing to ensure a flawless transition to your live environment with zero downtime.",
+                icon: "fa-check-circle"
+            },
+            {
+                id: 7,
+                title: "Post-Delivery Support (7 Days)",
+                description: "Our relationship doesn't end at launch. We provide 7 days of comprehensive post-delivery support to ensure your complete satisfaction and a smooth transition. During this period, our team remains fully available to address any questions, implement minor adjustments, fix any issues, and provide guidance on managing your new website.",
+                highlight: "For continued success, we offer flexible website maintenance packages that include regular updates, security monitoring, performance optimization, content updates, and technical support. These services ensure your digital investment continues to deliver value long after launch.",
+                icon: "fa-headset"
+            }
+        ];
+
+        // Function to load process steps from localStorage or default data
+        async function loadProcessSteps() {
+            const container = document.getElementById('process-steps-container');
+            container.innerHTML = '<div class="loading">Loading process steps...</div>';
+
+            try {
+                // Try to load from localStorage first
+                let processSteps;
+                const savedSteps = localStorage.getItem('processSteps');
+
+                if (savedSteps) {
+                    processSteps = JSON.parse(savedSteps);
+                } else {
+                    // Use default data if nothing in localStorage
+                    processSteps = defaultProcessSteps;
+                    // Save default data to localStorage
+                    localStorage.setItem('processSteps', JSON.stringify(processSteps));
+                }
+
+                renderProcessSteps(processSteps);
+
+                // Log activity
+                logActivity('view', 'Process Steps Loaded', 'The website development process steps were loaded.');
+            } catch (error) {
+                console.error('Error loading process steps:', error);
+                container.innerHTML = '<div class="error">Failed to load process steps. Please try again.</div>';
+            }
+        }
+
+        // Function to render process steps
+        function renderProcessSteps(steps) {
+            const container = document.getElementById('process-steps-container');
+            container.innerHTML = '';
+
+            steps.forEach(step => {
+                const stepCard = document.createElement('div');
+                stepCard.className = 'process-step-card';
+                stepCard.innerHTML = `
+                    <div class="step-header">
+                        <div class="step-number">${step.id}</div>
+                        <div class="step-title">${step.title}</div>
+                    </div>
+                    <div class="step-icon">
+                        <i class="fas ${step.icon}"></i>
+                    </div>
+                    <div class="step-description">${step.description}</div>
+                    <div class="step-highlight">${step.highlight}</div>
+                    <div class="step-actions">
+                        <button class="btn btn-secondary edit-btn" data-id="${step.id}">Edit</button>
+                    </div>
+
+                    <div class="edit-form" id="edit-form-${step.id}">
+                        <div class="form-group">
+                            <label for="title-${step.id}">Title</label>
+                            <input type="text" class="form-control" id="title-${step.id}" value="${step.title}">
+                        </div>
+                        <div class="form-group">
+                            <label for="description-${step.id}">Description</label>
+                            <textarea class="form-control" id="description-${step.id}">${step.description}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="highlight-${step.id}">Highlight</label>
+                            <textarea class="form-control" id="highlight-${step.id}">${step.highlight}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="icon-${step.id}">Icon</label>
+                            <input type="text" class="form-control" id="icon-${step.id}" value="${step.icon}">
+                            <div class="icon-picker" id="icon-picker-${step.id}">
+                                <div class="icon-option ${step.icon === 'fa-handshake' ? 'selected' : ''}" data-icon="fa-handshake"><i class="fas fa-handshake"></i></div>
+                                <div class="icon-option ${step.icon === 'fa-file-invoice-dollar' ? 'selected' : ''}" data-icon="fa-file-invoice-dollar"><i class="fas fa-file-invoice-dollar"></i></div>
+                                <div class="icon-option ${step.icon === 'fa-paint-brush' ? 'selected' : ''}" data-icon="fa-paint-brush"><i class="fas fa-paint-brush"></i></div>
+                                <div class="icon-option ${step.icon === 'fa-money-check-alt' ? 'selected' : ''}" data-icon="fa-money-check-alt"><i class="fas fa-money-check-alt"></i></div>
+                                <div class="icon-option ${step.icon === 'fa-laptop-code' ? 'selected' : ''}" data-icon="fa-laptop-code"><i class="fas fa-laptop-code"></i></div>
+                                <div class="icon-option ${step.icon === 'fa-check-circle' ? 'selected' : ''}" data-icon="fa-check-circle"><i class="fas fa-check-circle"></i></div>
+                                <div class="icon-option ${step.icon === 'fa-headset' ? 'selected' : ''}" data-icon="fa-headset"><i class="fas fa-headset"></i></div>
+                                <div class="icon-option ${step.icon === 'fa-cog' ? 'selected' : ''}" data-icon="fa-cog"><i class="fas fa-cog"></i></div>
+                                <div class="icon-option ${step.icon === 'fa-users' ? 'selected' : ''}" data-icon="fa-users"><i class="fas fa-users"></i></div>
+                                <div class="icon-option ${step.icon === 'fa-lightbulb' ? 'selected' : ''}" data-icon="fa-lightbulb"><i class="fas fa-lightbulb"></i></div>
+                                <div class="icon-option ${step.icon === 'fa-chart-line' ? 'selected' : ''}" data-icon="fa-chart-line"><i class="fas fa-chart-line"></i></div>
+                                <div class="icon-option ${step.icon === 'fa-rocket' ? 'selected' : ''}" data-icon="fa-rocket"><i class="fas fa-rocket"></i></div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-secondary cancel-btn" data-id="${step.id}">Cancel</button>
+                            <button class="btn btn-success save-btn" data-id="${step.id}">Save Changes</button>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(stepCard);
+            });
+
+            // Add event listeners to edit buttons
+            document.querySelectorAll('.edit-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const stepId = this.getAttribute('data-id');
+                    const editForm = document.getElementById(`edit-form-${stepId}`);
+                    editForm.style.display = 'block';
+                    this.style.display = 'none';
+                });
+            });
+
+            // Add event listeners to cancel buttons
+            document.querySelectorAll('.cancel-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const stepId = this.getAttribute('data-id');
+                    const editForm = document.getElementById(`edit-form-${stepId}`);
+                    const editBtn = editForm.parentElement.querySelector('.edit-btn');
+
+                    editForm.style.display = 'none';
+                    editBtn.style.display = 'inline-block';
+                });
+            });
+
+            // Add event listeners to save buttons
+            document.querySelectorAll('.save-btn').forEach(button => {
+                button.addEventListener('click', async function() {
+                    const stepId = this.getAttribute('data-id');
+                    await saveProcessStep(stepId);
+                });
+            });
+
+            // Add event listeners to icon options
+            document.querySelectorAll('.icon-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const stepId = this.closest('.edit-form').id.replace('edit-form-', '');
+                    const iconInput = document.getElementById(`icon-${stepId}`);
+                    const iconValue = this.getAttribute('data-icon');
+
+                    // Update input value
+                    iconInput.value = iconValue;
+
+                    // Update selected state
+                    this.closest('.icon-picker').querySelectorAll('.icon-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                });
+            });
+        }
+
+        // Function to save process step changes
+        async function saveProcessStep(stepId) {
+            const titleInput = document.getElementById(`title-${stepId}`);
+            const descriptionInput = document.getElementById(`description-${stepId}`);
+            const highlightInput = document.getElementById(`highlight-${stepId}`);
+            const iconInput = document.getElementById(`icon-${stepId}`);
+
+            try {
+                // Get current process steps from localStorage
+                const savedSteps = localStorage.getItem('processSteps');
+                let processSteps = savedSteps ? JSON.parse(savedSteps) : defaultProcessSteps;
+
+                // Find the step to update
+                const stepIndex = processSteps.findIndex(step => step.id === parseInt(stepId));
+
+                if (stepIndex === -1) {
+                    throw new Error(`Process step with ID ${stepId} not found`);
+                }
+
+                // Update the step with new values
+                processSteps[stepIndex] = {
+                    ...processSteps[stepIndex],
+                    title: titleInput.value,
+                    description: descriptionInput.value,
+                    highlight: highlightInput.value,
+                    icon: iconInput.value
+                };
+
+                // Save updated steps back to localStorage
+                localStorage.setItem('processSteps', JSON.stringify(processSteps));
+
+                // Show success message
+                const successAlert = document.getElementById('success-alert');
+                successAlert.style.display = 'block';
+                setTimeout(() => {
+                    successAlert.style.display = 'none';
+                }, 3000);
+
+                // Log activity
+                logActivity('edit', 'Process Step Updated', `The process step "${titleInput.value}" was updated.`);
+
+                // Reload process steps
+                loadProcessSteps();
+            } catch (error) {
+                console.error('Error saving process step:', error);
+
+                // Show error message
+                const errorAlert = document.getElementById('error-alert');
+                errorAlert.textContent = `Error: ${error.message || 'Failed to save changes. Please try again.'}`;
+                errorAlert.style.display = 'block';
+                setTimeout(() => {
+                    errorAlert.style.display = 'none';
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>

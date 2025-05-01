@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Aezline Admin</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #8b5cf6;
+            --dark-color: #1f2937;
+            --light-color: #f8f9fa;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .admin-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .admin-nav li {
+            margin-left: 20px;
+        }
+
+        .admin-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .admin-nav a:hover {
+            opacity: 0.8;
+        }
+
+        .admin-nav a.active {
+            border-bottom: 2px solid white;
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .page-title {
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: var(--dark-color);
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #e5e7eb;
+            color: var(--dark-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #d1d5db;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 30px;
+        }
+
+        .chart-filters {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background-color: #e5e7eb;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .data-table tbody tr:hover {
+            background-color: #f9fafb;
+        }
+
+        .data-table .progress-bar {
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .data-table .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .admin-nav {
+                margin-top: 15px;
+            }
+
+            .admin-nav ul {
+                justify-content: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .chart-container {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Aezline Admin</div>
+                <nav class="admin-nav">
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="process-editor.html">Process Steps</a></li>
+                        <li><a href="banner-manager.html">Banner Manager</a></li>
+                        <li><a href="messages.html">Messages</a></li>
+                        <li><a href="analytics.html" class="active">Analytics</a></li>
+                        <li><a href="settings.html">Settings</a></li>
+                        <li><a href="../index.html" target="_blank">View Site</a></li>
+                        <li><a href="#" id="logout-btn">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="page-title">Website Analytics</h1>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Overview</h2>
+                    <div>
+                        <button class="btn btn-primary" id="refresh-btn">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-value" id="visitors-count">152</div>
+                        <div class="stat-label">Visitors</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-value" id="pageviews-count">487</div>
+                        <div class="stat-label">Page Views</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-value" id="avg-time">2:15</div>
+                        <div class="stat-label">Avg. Time on Site</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="stat-value" id="bounce-rate">42%</div>
+                        <div class="stat-label">Bounce Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Visitor Trends</h2>
+                    <div class="chart-filters">
+                        <button class="filter-btn active" data-period="7">7 Days</button>
+                        <button class="filter-btn" data-period="30">30 Days</button>
+                        <button class="filter-btn" data-period="90">90 Days</button>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="visitors-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Top Pages</h2>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Page</th>
+                                <th>Views</th>
+                                <th>Avg. Time</th>
+                                <th>Bounce Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pages-table-body">
+                            <!-- Table rows will be added dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Traffic Sources</h2>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="sources-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Analytics Data - This will be populated with real data
+        let analyticsData = {
+            visitors: {
+                total: 0,
+                daily: [],
+                weekly: [],
+                monthly: []
+            },
+            pageViews: {
+                total: 0,
+                daily: []
+            },
+            avgTimeOnSite: '0:00',
+            bounceRate: '0%',
+            pages: [],
+            sources: {}
+        };
+
+        // Analytics Tracker - This would normally be included in all pages of the website
+        class AnalyticsTracker {
+            constructor() {
+                this.storageKey = 'websiteAnalytics';
+                this.sessionKey = 'analyticsSession';
+                this.data = this.loadData();
+                this.initSession();
+            }
+
+            // Load analytics data from localStorage
+            loadData() {
+                const savedData = localStorage.getItem(this.storageKey);
+                if (savedData) {
+                    return JSON.parse(savedData);
+                }
+
+                // Initialize with default structure
+                return {
+                    visitors: {
+                        total: 0,
+                        byDate: {}, // Format: '2023-06-15': 25
+                        byHour: {}  // Format: '2023-06-15-14': 5 (2pm on June 15)
+                    },
+                    pageViews: {
+                        total: 0,
+                        byPage: {}, // Format: '/index.html': 120
+                        byDate: {}  // Format: '2023-06-15': 85
+                    },
+                    sessions: {
+                        total: 0,
+                        durations: [], // Array of session durations in seconds
+                        bounces: 0     // Sessions with only one page view
+                    },
+                    sources: {
+                        'Direct': 0,
+                        'Organic Search': 0,
+                        'Social Media': 0,
+                        'Referral': 0,
+                        'Email': 0
+                    },
+                    devices: {
+                        'Desktop': 0,
+                        'Mobile': 0,
+                        'Tablet': 0
+                    },
+                    browsers: {
+                        'Chrome': 0,
+                        'Firefox': 0,
+                        'Safari': 0,
+                        'Edge': 0,
+                        'Other': 0
+                    },
+                    firstRecorded: new Date().toISOString(),
+                    lastUpdated: new Date().toISOString()
+                };
+            }
+
+            // Save analytics data to localStorage
+            saveData() {
+                this.data.lastUpdated = new Date().toISOString();
+                localStorage.setItem(this.storageKey, JSON.stringify(this.data));
+            }
+
+            // Initialize a new session
+            initSession() {
+                // Check if there's an existing session
+                const existingSession = sessionStorage.getItem(this.sessionKey);
+                if (!existingSession) {
+                    // Create new session
+                    const session = {
+                        id: this.generateSessionId(),
+                        startTime: new Date().toISOString(),
+                        pageViews: 0,
+                        pages: [],
+                        source: this.detectSource(),
+                        device: this.detectDevice(),
+                        browser: this.detectBrowser()
+                    };
+
+                    sessionStorage.setItem(this.sessionKey, JSON.stringify(session));
+
+                    // Record new visitor
+                    this.recordVisitor();
+
+                    // Record source
+                    this.recordSource(session.source);
+
+                    // Record device
+                    this.recordDevice(session.device);
+
+                    // Record browser
+                    this.recordBrowser(session.browser);
+                }
+
+                // Record page view
+                this.recordPageView();
+            }
+
+            // Generate a unique session ID
+            generateSessionId() {
+                return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            }
+
+            // Record a new visitor
+            recordVisitor() {
+                // Increment total visitors
+                this.data.visitors.total++;
+
+                // Record by date
+                const today = new Date().toISOString().split('T')[0]; // Format: 2023-06-15
+                this.data.visitors.byDate[today] = (this.data.visitors.byDate[today] || 0) + 1;
+
+                // Record by hour
+                const hour = new Date().getHours();
+                const dateHour = `${today}-${hour}`;
+                this.data.visitors.byHour[dateHour] = (this.data.visitors.byHour[dateHour] || 0) + 1;
+
+                // Increment total sessions
+                this.data.sessions.total++;
+
+                this.saveData();
+            }
+
+            // Record a page view
+            recordPageView() {
+                // Get current session
+                const sessionData = JSON.parse(sessionStorage.getItem(this.sessionKey));
+
+                // Get current page
+                const page = window.location.pathname;
+
+                // Increment total page views
+                this.data.pageViews.total++;
+
+                // Record by page
+                this.data.pageViews.byPage[page] = (this.data.pageViews.byPage[page] || 0) + 1;
+
+                // Record by date
+                const today = new Date().toISOString().split('T')[0];
+                this.data.pageViews.byDate[today] = (this.data.pageViews.byDate[today] || 0) + 1;
+
+                // Update session
+                sessionData.pageViews++;
+                if (!sessionData.pages.includes(page)) {
+                    sessionData.pages.push(page);
+                }
+                sessionStorage.setItem(this.sessionKey, JSON.stringify(sessionData));
+
+                this.saveData();
+            }
+
+            // Record session end
+            recordSessionEnd() {
+                const sessionData = JSON.parse(sessionStorage.getItem(this.sessionKey));
+                if (!sessionData) return;
+
+                // Calculate session duration
+                const startTime = new Date(sessionData.startTime);
+                const endTime = new Date();
+                const duration = Math.floor((endTime - startTime) / 1000); // in seconds
+
+                // Record session duration
+                this.data.sessions.durations.push(duration);
+
+                // Check if it's a bounce (only one page view)
+                if (sessionData.pages.length === 1) {
+                    this.data.sessions.bounces++;
+                }
+
+                this.saveData();
+            }
+
+            // Record traffic source
+            recordSource(source) {
+                if (this.data.sources[source] !== undefined) {
+                    this.data.sources[source]++;
+                } else {
+                    this.data.sources[source] = 1;
+                }
+
+                this.saveData();
+            }
+
+            // Record device type
+            recordDevice(device) {
+                if (this.data.devices[device] !== undefined) {
+                    this.data.devices[device]++;
+                } else {
+                    this.data.devices[device] = 1;
+                }
+
+                this.saveData();
+            }
+
+            // Record browser
+            recordBrowser(browser) {
+                if (this.data.browsers[browser] !== undefined) {
+                    this.data.browsers[browser]++;
+                } else {
+                    this.data.browsers[browser] = 1;
+                }
+
+                this.saveData();
+            }
+
+            // Detect traffic source
+            detectSource() {
+                const referrer = document.referrer;
+
+                if (!referrer) {
+                    return 'Direct';
+                }
+
+                const referrerDomain = new URL(referrer).hostname;
+
+                // Check for search engines
+                const searchEngines = ['google', 'bing', 'yahoo', 'duckduckgo', 'baidu'];
+                if (searchEngines.some(se => referrerDomain.includes(se))) {
+                    return 'Organic Search';
+                }
+
+                // Check for social media
+                const socialMedia = ['facebook', 'twitter', 'instagram', 'linkedin', 'pinterest', 'youtube'];
+                if (socialMedia.some(sm => referrerDomain.includes(sm))) {
+                    return 'Social Media';
+                }
+
+                // Check for email clients
+                if (referrerDomain.includes('mail') || referrerDomain.includes('outlook') || referrerDomain.includes('gmail')) {
+                    return 'Email';
+                }
+
+                // Otherwise it's a referral
+                return 'Referral';
+            }
+
+            // Detect device type
+            detectDevice() {
+                const userAgent = navigator.userAgent;
+
+                if (/iPad|tablet|Kindle|PlayBook/i.test(userAgent)) {
+                    return 'Tablet';
+                } else if (/Mobile|Android|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)) {
+                    return 'Mobile';
+                } else {
+                    return 'Desktop';
+                }
+            }
+
+            // Detect browser
+            detectBrowser() {
+                const userAgent = navigator.userAgent;
+
+                if (userAgent.indexOf('Chrome') > -1 && userAgent.indexOf('Edge') === -1) {
+                    return 'Chrome';
+                } else if (userAgent.indexOf('Firefox') > -1) {
+                    return 'Firefox';
+                } else if (userAgent.indexOf('Safari') > -1 && userAgent.indexOf('Chrome') === -1) {
+                    return 'Safari';
+                } else if (userAgent.indexOf('Edge') > -1) {
+                    return 'Edge';
+                } else {
+                    return 'Other';
+                }
+            }
+
+            // Get analytics data for dashboard
+            getAnalyticsData() {
+                // Calculate average time on site
+                let avgTime = '0:00';
+                if (this.data.sessions.durations.length > 0) {
+                    const totalSeconds = this.data.sessions.durations.reduce((a, b) => a + b, 0);
+                    const avgSeconds = Math.floor(totalSeconds / this.data.sessions.durations.length);
+                    const minutes = Math.floor(avgSeconds / 60);
+                    const seconds = avgSeconds % 60;
+                    avgTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                }
+
+                // Calculate bounce rate
+                let bounceRate = '0%';
+                if (this.data.sessions.total > 0) {
+                    const rate = Math.round((this.data.sessions.bounces / this.data.sessions.total) * 100);
+                    bounceRate = `${rate}%`;
+                }
+
+                // Get daily visitors for the last 7 days
+                const daily = this.getLast7DaysVisitors();
+
+                // Get weekly visitors for the last 10 weeks
+                const weekly = this.getLast10WeeksVisitors();
+
+                // Get monthly visitors for the last 14 months
+                const monthly = this.getLast14MonthsVisitors();
+
+                // Get daily page views for the last 7 days
+                const dailyPageViews = this.getLast7DaysPageViews();
+
+                // Get top pages
+                const pages = this.getTopPages();
+
+                return {
+                    visitors: {
+                        total: this.data.visitors.total,
+                        daily,
+                        weekly,
+                        monthly
+                    },
+                    pageViews: {
+                        total: this.data.pageViews.total,
+                        daily: dailyPageViews
+                    },
+                    avgTimeOnSite: avgTime,
+                    bounceRate,
+                    pages,
+                    sources: this.data.sources,
+                    devices: this.data.devices,
+                    browsers: this.data.browsers
+                };
+            }
+
+            // Get visitors for the last 7 days
+            getLast7DaysVisitors() {
+                const result = [];
+                const today = new Date();
+
+                for (let i = 6; i >= 0; i--) {
+                    const date = new Date(today);
+                    date.setDate(date.getDate() - i);
+                    const dateStr = date.toISOString().split('T')[0];
+                    result.push(this.data.visitors.byDate[dateStr] || 0);
+                }
+
+                return result;
+            }
+
+            // Get visitors for the last 10 weeks
+            getLast10WeeksVisitors() {
+                const result = [];
+                const today = new Date();
+
+                for (let i = 9; i >= 0; i--) {
+                    let weekTotal = 0;
+                    for (let j = 6; j >= 0; j--) {
+                        const date = new Date(today);
+                        date.setDate(date.getDate() - (i * 7 + j));
+                        const dateStr = date.toISOString().split('T')[0];
+                        weekTotal += (this.data.visitors.byDate[dateStr] || 0);
+                    }
+                    result.push(weekTotal);
+                }
+
+                return result;
+            }
+
+            // Get visitors for the last 14 months
+            getLast14MonthsVisitors() {
+                const result = [];
+                const today = new Date();
+
+                for (let i = 13; i >= 0; i--) {
+                    let monthTotal = 0;
+                    const date = new Date(today);
+                    date.setMonth(date.getMonth() - i);
+                    const year = date.getFullYear();
+                    const month = date.getMonth();
+
+                    // Get all days in this month
+                    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                    for (let day = 1; day <= daysInMonth; day++) {
+                        const dateObj = new Date(year, month, day);
+                        const dateStr = dateObj.toISOString().split('T')[0];
+                        monthTotal += (this.data.visitors.byDate[dateStr] || 0);
+                    }
+
+                    result.push(monthTotal);
+                }
+
+                return result;
+            }
+
+            // Get page views for the last 7 days
+            getLast7DaysPageViews() {
+                const result = [];
+                const today = new Date();
+
+                for (let i = 6; i >= 0; i--) {
+                    const date = new Date(today);
+                    date.setDate(date.getDate() - i);
+                    const dateStr = date.toISOString().split('T')[0];
+                    result.push(this.data.pageViews.byDate[dateStr] || 0);
+                }
+
+                return result;
+            }
+
+            // Get top pages
+            getTopPages() {
+                const pages = [];
+                const pageData = this.data.pageViews.byPage;
+
+                // Convert to array and sort by views
+                const sortedPages = Object.entries(pageData)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5); // Get top 5
+
+                // Format data
+                sortedPages.forEach(([url, views]) => {
+                    // Get page title from URL
+                    let title = url;
+                    if (url === '/' || url === '/index.html') {
+                        title = 'Home';
+                    } else {
+                        // Remove extension and leading slash
+                        title = url.replace(/\.html$/, '').replace(/^\//, '');
+                        // Capitalize first letter
+                        title = title.charAt(0).toUpperCase() + title.slice(1);
+                    }
+
+                    // Calculate average time (random for demo)
+                    const minutes = Math.floor(Math.random() * 3) + 1;
+                    const seconds = Math.floor(Math.random() * 60);
+                    const avgTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+                    // Calculate bounce rate (random for demo)
+                    const bounceRate = `${Math.floor(Math.random() * 30) + 30}%`;
+
+                    pages.push({
+                        url,
+                        title,
+                        views,
+                        avgTime,
+                        bounceRate
+                    });
+                });
+
+                return pages;
+            }
+
+            // Generate demo data
+            generateDemoData() {
+                // Reset data
+                this.data = {
+                    visitors: {
+                        total: 0,
+                        byDate: {},
+                        byHour: {}
+                    },
+                    pageViews: {
+                        total: 0,
+                        byPage: {},
+                        byDate: {}
+                    },
+                    sessions: {
+                        total: 0,
+                        durations: [],
+                        bounces: 0
+                    },
+                    sources: {
+                        'Direct': 0,
+                        'Organic Search': 0,
+                        'Social Media': 0,
+                        'Referral': 0,
+                        'Email': 0
+                    },
+                    devices: {
+                        'Desktop': 0,
+                        'Mobile': 0,
+                        'Tablet': 0
+                    },
+                    browsers: {
+                        'Chrome': 0,
+                        'Firefox': 0,
+                        'Safari': 0,
+                        'Edge': 0,
+                        'Other': 0
+                    },
+                    firstRecorded: new Date().toISOString(),
+                    lastUpdated: new Date().toISOString()
+                };
+
+                // Generate data for the last 90 days
+                const today = new Date();
+
+                for (let i = 90; i >= 0; i--) {
+                    const date = new Date(today);
+                    date.setDate(date.getDate() - i);
+                    const dateStr = date.toISOString().split('T')[0];
+
+                    // Generate visitors (more recent days have more visitors)
+                    const baseVisitors = 10 + Math.floor(Math.random() * 10);
+                    const trendFactor = 1 + ((90 - i) / 90); // Increasing trend
+                    const visitors = Math.floor(baseVisitors * trendFactor);
+                    this.data.visitors.byDate[dateStr] = visitors;
+                    this.data.visitors.total += visitors;
+
+                    // Generate page views (2-4 per visitor)
+                    const pageViewsPerVisitor = 2 + Math.floor(Math.random() * 3);
+                    const pageViews = visitors * pageViewsPerVisitor;
+                    this.data.pageViews.byDate[dateStr] = pageViews;
+                    this.data.pageViews.total += pageViews;
+
+                    // Generate sessions
+                    this.data.sessions.total += visitors;
+
+                    // Generate session durations
+                    for (let j = 0; j < visitors; j++) {
+                        const duration = 30 + Math.floor(Math.random() * 270); // 30s to 5min
+                        this.data.sessions.durations.push(duration);
+                    }
+
+                    // Generate bounces (20-40% of visitors)
+                    const bounceRate = 0.2 + (Math.random() * 0.2);
+                    const bounces = Math.floor(visitors * bounceRate);
+                    this.data.sessions.bounces += bounces;
+                }
+
+                // Generate page views by page
+                const pages = [
+                    '/',
+                    '/index.html',
+                    '/services.html',
+                    '/portfolio.html',
+                    '/about.html',
+                    '/contact.html',
+                    '/process.html'
+                ];
+
+                // Distribute page views
+                const totalPageViews = this.data.pageViews.total;
+                let remainingViews = totalPageViews;
+
+                // Home page gets 35-45%
+                const homeViews = Math.floor(totalPageViews * (0.35 + Math.random() * 0.1));
+                this.data.pageViews.byPage['/'] = homeViews;
+                remainingViews -= homeViews;
+
+                // Services page gets 20-30%
+                const servicesViews = Math.floor(totalPageViews * (0.2 + Math.random() * 0.1));
+                this.data.pageViews.byPage['/services.html'] = servicesViews;
+                remainingViews -= servicesViews;
+
+                // Distribute remaining views
+                const otherPages = pages.slice(2);
+                for (let i = 0; i < otherPages.length; i++) {
+                    const page = otherPages[i];
+                    let views;
+
+                    if (i === otherPages.length - 1) {
+                        // Last page gets all remaining views
+                        views = remainingViews;
+                    } else {
+                        // Random portion of remaining views
+                        const portion = 0.1 + Math.random() * 0.3;
+                        views = Math.floor(remainingViews * portion);
+                        remainingViews -= views;
+                    }
+
+                    this.data.pageViews.byPage[page] = views;
+                }
+
+                // Generate sources
+                this.data.sources['Direct'] = Math.floor(this.data.visitors.total * (0.3 + Math.random() * 0.1));
+                this.data.sources['Organic Search'] = Math.floor(this.data.visitors.total * (0.25 + Math.random() * 0.1));
+                this.data.sources['Social Media'] = Math.floor(this.data.visitors.total * (0.15 + Math.random() * 0.1));
+                this.data.sources['Referral'] = Math.floor(this.data.visitors.total * (0.1 + Math.random() * 0.05));
+                this.data.sources['Email'] = Math.floor(this.data.visitors.total * (0.05 + Math.random() * 0.05));
+
+                // Generate devices
+                this.data.devices['Desktop'] = Math.floor(this.data.visitors.total * (0.6 + Math.random() * 0.1));
+                this.data.devices['Mobile'] = Math.floor(this.data.visitors.total * (0.3 + Math.random() * 0.1));
+                this.data.devices['Tablet'] = this.data.visitors.total - this.data.devices['Desktop'] - this.data.devices['Mobile'];
+
+                // Generate browsers
+                this.data.browsers['Chrome'] = Math.floor(this.data.visitors.total * (0.6 + Math.random() * 0.1));
+                this.data.browsers['Firefox'] = Math.floor(this.data.visitors.total * (0.15 + Math.random() * 0.05));
+                this.data.browsers['Safari'] = Math.floor(this.data.visitors.total * (0.1 + Math.random() * 0.05));
+                this.data.browsers['Edge'] = Math.floor(this.data.visitors.total * (0.05 + Math.random() * 0.05));
+                this.data.browsers['Other'] = this.data.visitors.total - this.data.browsers['Chrome'] - this.data.browsers['Firefox'] - this.data.browsers['Safari'] - this.data.browsers['Edge'];
+
+                this.saveData();
+                return this.getAnalyticsData();
+            }
+        }
+
+        // Chart instances
+        let visitorsChart;
+        let sourcesChart;
+        let deviceChart;
+        let browserChart;
+
+        // Initialize Analytics
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            if (!localStorage.getItem('adminLoggedIn')) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Create analytics tracker
+            const tracker = new AnalyticsTracker();
+
+            // Check if we have data, if not generate demo data
+            if (tracker.data.visitors.total === 0) {
+                analyticsData = tracker.generateDemoData();
+            } else {
+                analyticsData = tracker.getAnalyticsData();
+            }
+
+            // Load analytics data
+            loadAnalyticsData();
+
+            // Initialize charts
+            initVisitorsChart('7'); // Default to 7 days
+            initSourcesChart();
+
+            // Initialize filter buttons
+            initFilterButtons();
+
+            // Refresh button
+            document.getElementById('refresh-btn').addEventListener('click', function() {
+                refreshAnalyticsData(tracker);
+            });
+
+            // Add logout functionality
+            document.getElementById('logout-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Record session end before logout
+                tracker.recordSessionEnd();
+
+                // Log activity
+                logActivity('logout', 'Admin Logout', 'Administrator logged out of the system.');
+
+                // Perform logout
+                localStorage.removeItem('adminLoggedIn');
+                window.location.href = 'login.html';
+            });
+
+            // Add device and browser charts
+            addDeviceAndBrowserCharts();
+
+            // Record this page view in analytics
+            tracker.recordPageView();
+
+            // Set up beforeunload event to record session end
+            window.addEventListener('beforeunload', function() {
+                tracker.recordSessionEnd();
+            });
+        });
+
+        // Load analytics data
+        function loadAnalyticsData() {
+            // Update overview stats
+            document.getElementById('visitors-count').textContent = analyticsData.visitors.total;
+            document.getElementById('pageviews-count').textContent = analyticsData.pageViews.total;
+            document.getElementById('avg-time').textContent = analyticsData.avgTimeOnSite;
+            document.getElementById('bounce-rate').textContent = analyticsData.bounceRate;
+
+            // Load top pages table
+            loadTopPagesTable();
+        }
+
+        // Load top pages table
+        function loadTopPagesTable() {
+            const tableBody = document.getElementById('pages-table-body');
+            tableBody.innerHTML = '';
+
+            if (!analyticsData.pages || analyticsData.pages.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = '<td colspan="4" style="text-align: center;">No page data available</td>';
+                tableBody.appendChild(row);
+                return;
+            }
+
+            analyticsData.pages.forEach(page => {
+                const row = document.createElement('tr');
+
+                // Calculate progress bar width based on views
+                const maxViews = Math.max(...analyticsData.pages.map(p => p.views));
+                const progressWidth = (page.views / maxViews) * 100;
+
+                row.innerHTML = `
+                    <td>${page.title}</td>
+                    <td>
+                        <div>${page.views}</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progressWidth}%"></div>
+                        </div>
+                    </td>
+                    <td>${page.avgTime}</td>
+                    <td>${page.bounceRate}</td>
+                `;
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Initialize visitors chart
+        function initVisitorsChart(period) {
+            const ctx = document.getElementById('visitors-chart').getContext('2d');
+
+            // Get data based on period
+            const data = getVisitorDataByPeriod(period);
+
+            // Destroy existing chart if it exists
+            if (visitorsChart) {
+                visitorsChart.destroy();
+            }
+
+            // Create new chart
+            visitorsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.labels,
+                    datasets: [
+                        {
+                            label: 'Visitors',
+                            data: data.visitors,
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Page Views',
+                            data: data.pageViews,
+                            borderColor: '#8b5cf6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Get visitor data by period
+        function getVisitorDataByPeriod(period) {
+            let labels, visitors, pageViews;
+
+            switch (period) {
+                case '7':
+                    labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                    visitors = analyticsData.visitors.daily;
+                    pageViews = analyticsData.pageViews.daily;
+                    break;
+                case '30':
+                    labels = Array.from({ length: 10 }, (_, i) => `Week ${i + 1}`);
+                    visitors = analyticsData.visitors.weekly;
+                    // Generate page views (roughly 3x visitors)
+                    pageViews = visitors.map(v => Math.round(v * 3));
+                    break;
+                case '90':
+                    // Get month names for the last 14 months
+                    const months = [];
+                    const today = new Date();
+                    for (let i = 13; i >= 0; i--) {
+                        const date = new Date(today);
+                        date.setMonth(date.getMonth() - i);
+                        months.push(date.toLocaleString('default', { month: 'short' }));
+                    }
+
+                    labels = months;
+                    visitors = analyticsData.visitors.monthly;
+                    // Generate page views (roughly 3x visitors)
+                    pageViews = visitors.map(v => Math.round(v * 3));
+                    break;
+                default:
+                    labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                    visitors = analyticsData.visitors.daily;
+                    pageViews = analyticsData.pageViews.daily;
+            }
+
+            return { labels, visitors, pageViews };
+        }
+
+        // Initialize sources chart
+        function initSourcesChart() {
+            const ctx = document.getElementById('sources-chart').getContext('2d');
+
+            // Get sources data
+            const labels = Object.keys(analyticsData.sources);
+            const data = Object.values(analyticsData.sources);
+
+            // Destroy existing chart if it exists
+            if (sourcesChart) {
+                sourcesChart.destroy();
+            }
+
+            // Create chart
+            sourcesChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: [
+                            '#3b82f6',
+                            '#8b5cf6',
+                            '#10b981',
+                            '#f59e0b',
+                            '#ef4444'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Add device and browser charts
+        function addDeviceAndBrowserCharts() {
+            // Add device chart container
+            const deviceChartContainer = document.createElement('div');
+            deviceChartContainer.className = 'card';
+            deviceChartContainer.innerHTML = `
+                <div class="card-header">
+                    <h2 class="card-title">Device Types</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="device-chart"></canvas>
+                </div>
+            `;
+
+            // Add browser chart container
+            const browserChartContainer = document.createElement('div');
+            browserChartContainer.className = 'card';
+            browserChartContainer.innerHTML = `
+                <div class="card-header">
+                    <h2 class="card-title">Browsers</h2>
+                </div>
+                <div class="chart-container">
+                    <canvas id="browser-chart"></canvas>
+                </div>
+            `;
+
+            // Add to page
+            const container = document.querySelector('main .container');
+            container.appendChild(deviceChartContainer);
+            container.appendChild(browserChartContainer);
+
+            // Initialize device chart
+            initDeviceChart();
+
+            // Initialize browser chart
+            initBrowserChart();
+        }
+
+        // Initialize device chart
+        function initDeviceChart() {
+            const ctx = document.getElementById('device-chart').getContext('2d');
+
+            // Get device data
+            const labels = Object.keys(analyticsData.devices || {});
+            const data = Object.values(analyticsData.devices || {});
+
+            // Create chart
+            deviceChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: [
+                            '#3b82f6',
+                            '#10b981',
+                            '#f59e0b'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize browser chart
+        function initBrowserChart() {
+            const ctx = document.getElementById('browser-chart').getContext('2d');
+
+            // Get browser data
+            const labels = Object.keys(analyticsData.browsers || {});
+            const data = Object.values(analyticsData.browsers || {});
+
+            // Create chart
+            browserChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Visitors',
+                        data: data,
+                        backgroundColor: [
+                            '#3b82f6',
+                            '#8b5cf6',
+                            '#10b981',
+                            '#f59e0b',
+                            '#ef4444'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize filter buttons
+        function initFilterButtons() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    // Update chart
+                    const period = this.getAttribute('data-period');
+                    initVisitorsChart(period);
+
+                    // Log activity
+                    logActivity('filter', 'Changed Time Period', `Analytics time period changed to ${period} days.`);
+                });
+            });
+        }
+
+        // Refresh analytics data
+        function refreshAnalyticsData(tracker) {
+            // Get fresh data from tracker
+            analyticsData = tracker.getAnalyticsData();
+
+            // Reload data
+            loadAnalyticsData();
+
+            // Update charts
+            const activePeriod = document.querySelector('.filter-btn.active').getAttribute('data-period');
+            initVisitorsChart(activePeriod);
+            initSourcesChart();
+            initDeviceChart();
+            initBrowserChart();
+
+            // Log activity
+            logActivity('refresh', 'Analytics Refreshed', 'Website analytics data was refreshed.');
+        }
+
+        // Log activity
+        function logActivity(type, title, description) {
+            // Create activity object
+            const activity = {
+                type: type,
+                icon: 'fa-chart-line',
+                iconClass: 'icon-primary',
+                title: title,
+                description: description,
+                time: 'Just now'
+            };
+
+            // Load existing activities
+            const savedActivities = localStorage.getItem('activities');
+            const activities = savedActivities ? JSON.parse(savedActivities) : [];
+
+            // Add new activity at the beginning
+            activities.unshift(activity);
+
+            // Limit to 10 activities
+            if (activities.length > 10) {
+                activities.pop();
+            }
+
+            // Save updated activities
+            localStorage.setItem('activities', JSON.stringify(activities));
+        }
+    </script>
+</body>
+</html>

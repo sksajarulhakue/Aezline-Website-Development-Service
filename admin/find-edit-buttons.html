@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Find Edit Buttons - Aezline Admin</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    
+    <style>
+        .help-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .help-title {
+            color: var(--admin-primary);
+            margin-top: 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .help-section {
+            margin-bottom: 30px;
+        }
+        
+        .help-section h2 {
+            color: var(--admin-text);
+            border-bottom: 1px solid var(--admin-border);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .help-steps {
+            padding-left: 20px;
+        }
+        
+        .help-steps li {
+            margin-bottom: 15px;
+        }
+        
+        .help-note {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--admin-warning);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .button-example {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--admin-info);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin: 10px 0;
+        }
+        
+        .button-example i {
+            margin-right: 5px;
+        }
+        
+        .image-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            border: 1px solid var(--admin-border);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .image-caption {
+            margin-top: 10px;
+            color: var(--admin-text-muted);
+            font-style: italic;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .action-buttons a {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body class="admin-body">
+    <div class="help-container">
+        <h1 class="help-title">How to Find Edit Buttons in Admin Dashboard</h1>
+        
+        <div class="help-section">
+            <h2>Step-by-Step Guide</h2>
+            <ol class="help-steps">
+                <li>
+                    <strong>Login to Admin Dashboard:</strong> 
+                    <p>Navigate to <code>admin/login.html</code> and login with username: <strong>admin</strong> and password: <strong>admin123</strong></p>
+                </li>
+                <li>
+                    <strong>Go to Blog Management:</strong>
+                    <p>After logging in, click on <strong>"Blog Posts"</strong> in the sidebar menu</p>
+                </li>
+                <li>
+                    <strong>Find Edit Buttons:</strong>
+                    <p>The edit buttons are in the "Actions" column of the blog posts table</p>
+                </li>
+            </ol>
+        </div>
+        
+        <div class="help-note">
+            <p><strong>Important:</strong> The edit buttons are ONLY visible in the admin dashboard, not on the public-facing blog pages.</p>
+        </div>
+        
+        <div class="help-section">
+            <h2>What the Edit Button Looks Like</h2>
+            <p>The edit button looks like this:</p>
+            <div class="button-example">
+                <i class="fas fa-edit"></i> Edit
+            </div>
+            
+            <div class="image-container">
+                <img src="images/edit-button-location.svg" alt="Edit Button Location">
+                <p class="image-caption">The edit buttons are highlighted in red in the Actions column</p>
+            </div>
+        </div>
+        
+        <div class="help-section">
+            <h2>Troubleshooting</h2>
+            <ul class="help-steps">
+                <li>Make sure you're logged in to the admin dashboard</li>
+                <li>Ensure you're on the Blog Posts page</li>
+                <li>Try refreshing the page</li>
+                <li>Check if there are any JavaScript errors in your browser console</li>
+                <li>Try using a different browser</li>
+            </ul>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="login.html" class="admin-btn admin-btn-primary">Go to Login Page</a>
+            <a href="blog.html" class="admin-btn admin-btn-secondary">Go to Blog Management</a>
+        </div>
+    </div>
+</body>
+</html>
