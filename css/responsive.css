@@ -1,0 +1,375 @@
+/* Responsive CSS */
+
+/* Extra Large Devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .hero-content {
+        max-width: 800px;
+    }
+}
+
+/* Large Devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .hero-content {
+        max-width: 700px;
+    }
+
+    .animated-headline {
+        font-size: 3rem;
+    }
+
+    .service-card,
+    .feature-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* Medium Devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .hero-content {
+        max-width: 600px;
+    }
+
+    .animated-headline {
+        font-size: 2.8rem;
+    }
+
+    .hero-description {
+        font-size: 1.1rem;
+    }
+
+    .service-icon,
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        font-size: 2.5rem;
+    }
+
+    .service-card h3,
+    .feature-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* Small Devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .container {
+        max-width: 540px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+
+    .animated-headline {
+        font-size: 2.5rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn-secondary {
+        margin-left: 0;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .services-grid,
+    .features-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .testimonial-slide {
+        min-width: 100%;
+    }
+
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .footer-bottom-links {
+        justify-content: center;
+    }
+}
+
+/* Extra Small Devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .container {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .animated-headline {
+        font-size: 2.2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        max-width: 100%;
+        margin: 1rem 0 1.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px 20px;
+    }
+
+    .btn-secondary {
+        margin-left: 0;
+    }
+
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
+
+    .services-grid,
+    .features-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .service-card,
+    .feature-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .service-icon,
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 2rem;
+    }
+
+    .service-card h3,
+    .feature-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .testimonial-slide {
+        min-width: 100%;
+        padding: 1.5rem;
+    }
+
+    .testimonial-text {
+        font-size: 0.9rem;
+    }
+
+    .cta-section {
+        padding: 2.5rem 1rem;
+        margin: 3rem auto;
+    }
+
+    .cta-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .cta-content p {
+        font-size: 1rem;
+    }
+
+    .footer {
+        padding: 3rem 0 1.5rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer h3 {
+        font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .footer-bottom-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .popup-container {
+        width: 95%;
+    }
+
+    .popup-header {
+        padding: 1rem;
+    }
+
+    .popup-body {
+        padding: 1rem;
+    }
+
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 991.98px) {
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 400px;
+        height: 100vh;
+        background: var(--light-color);
+        box-shadow: var(--shadow-lg);
+        padding: 5rem 2rem;
+        transition: right var(--transition-normal);
+        z-index: 999;
+        overflow-y: auto;
+    }
+
+    body.dark-mode .nav-menu {
+        background: var(--bg-dark);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Mobile Contact Button */
+    .header-actions.mobile-visible {
+        position: fixed;
+        top: 20px;
+        right: 80px;
+        z-index: 1000;
+    }
+
+    .header-actions.mobile-visible .premium-contact-btn {
+        background: linear-gradient(135deg, #25d366, #128c7e);
+        box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .header,
+    .footer,
+    .back-to-top,
+    .dark-mode-toggle,
+    .cta-section,
+    .popup-overlay {
+        display: none !important;
+    }
+
+    body {
+        background-color: #fff;
+        color: #000;
+        font-size: 12pt;
+    }
+
+    a {
+        text-decoration: underline;
+        color: #000;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero,
+    section {
+        padding: 1cm 0;
+        page-break-inside: avoid;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+    }
+}

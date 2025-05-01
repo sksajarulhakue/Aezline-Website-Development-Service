@@ -1,0 +1,526 @@
+/* Premium Hero Section - 2024 */
+
+/* Main Hero Container */
+.premium-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
+    padding-top: 80px; /* Account for fixed header */
+    perspective: 1000px; /* Add perspective for 3D effects */
+}
+
+/* Background Elements */
+.premium-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.premium-hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Premium Gradient Overlay */
+.premium-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+        rgba(13, 17, 23, 0.85) 0%,
+        rgba(20, 30, 48, 0.75) 50%,
+        rgba(13, 17, 23, 0.85) 100%);
+    z-index: -1;
+}
+
+/* Animated Particles */
+.premium-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+/* Hero Content Container */
+.premium-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Text Content */
+.premium-hero-text {
+    max-width: 600px;
+    text-align: left;
+    animation: fadeInLeft 1s ease-out forwards;
+}
+
+/* 3D Main Headline */
+.premium-hero-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #fff, #a3c2ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.premium-hero-title span {
+    display: block;
+    position: relative;
+    transform: translateZ(10px);
+    transition: all 0.3s ease;
+}
+
+.premium-hero-title span:hover {
+    transform: translateZ(20px) translateY(-5px);
+    text-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.premium-hero-title .highlight {
+    background: linear-gradient(to right, #3b82f6, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    transform: translateZ(20px);
+    animation: titleFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleFloat {
+    0% { transform: translateZ(20px) translateY(0); }
+    100% { transform: translateZ(30px) translateY(-5px); }
+}
+
+/* 3D Animated Underline */
+.premium-hero-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(to right, #3b82f6, #60a5fa);
+    border-radius: 5px;
+    animation: expandWidth 1.5s ease-out forwards, glowLine 3s infinite alternate;
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.5);
+    transform: translateZ(-5px);
+}
+
+@keyframes expandWidth {
+    0% { width: 0; }
+    100% { width: 100px; }
+}
+
+@keyframes glowLine {
+    0% { box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3); }
+    100% { box-shadow: 0 5px 25px rgba(59, 130, 246, 0.7); }
+}
+
+/* 3D Text Effect */
+.premium-hero-title::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(163, 194, 255, 0.1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transform: translateZ(-10px);
+    filter: blur(10px);
+    opacity: 0.5;
+    z-index: -1;
+}
+
+/* Subtitle */
+.premium-hero-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2.5rem;
+    max-width: 90%;
+}
+
+/* CTA Buttons */
+.premium-hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.premium-btn {
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.premium-btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: #fff;
+    border: none;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+.premium-btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+}
+
+.premium-btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.premium-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-5px);
+}
+
+.premium-btn i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.premium-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* Hero Image with 3D Effects */
+.premium-hero-image {
+    position: relative;
+    max-width: 500px;
+    animation: fadeInRight 1s ease-out forwards;
+    transform-style: preserve-3d;
+    perspective: 1500px;
+}
+
+.premium-hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+    transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.25));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.premium-hero-image:hover img {
+    transform: perspective(1000px) rotateY(-5deg) rotateX(2deg) translateZ(30px);
+    filter: drop-shadow(0 40px 70px rgba(0, 0, 0, 0.3));
+}
+
+/* 3D Floating Card Effect */
+.premium-hero-image::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.2));
+    border-radius: 20px;
+    transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateZ(-50px);
+    filter: blur(10px);
+    opacity: 0.7;
+    transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: -1;
+}
+
+.premium-hero-image:hover::before {
+    transform: perspective(1000px) rotateY(-5deg) rotateX(2deg) translateZ(-20px);
+    opacity: 0.9;
+}
+
+/* 3D Glowing Edge Effect */
+.premium-hero-image::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: linear-gradient(135deg, #3b82f6, #60a5fa, #3b82f6);
+    border-radius: 22px;
+    z-index: -2;
+    opacity: 0.5;
+    filter: blur(5px);
+    animation: glowPulse 3s infinite alternate;
+    transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+    transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.premium-hero-image:hover::after {
+    opacity: 0.8;
+    filter: blur(7px);
+    transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+}
+
+@keyframes glowPulse {
+    0% { opacity: 0.3; filter: blur(5px); }
+    100% { opacity: 0.8; filter: blur(7px); }
+}
+
+/* 3D Floating Elements */
+.premium-floating-element {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(37, 99, 235, 0.5));
+    filter: blur(20px);
+    z-index: -1;
+    animation: float 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.premium-floating-1 {
+    width: 150px;
+    height: 150px;
+    top: -50px;
+    right: -30px;
+    animation-delay: 0s;
+    background: radial-gradient(circle at 30% 30%, rgba(96, 165, 250, 0.7), rgba(37, 99, 235, 0.5));
+}
+
+.premium-floating-2 {
+    width: 100px;
+    height: 100px;
+    bottom: 50px;
+    right: 50px;
+    animation-delay: 2s;
+    background: radial-gradient(circle at 70% 30%, rgba(96, 165, 250, 0.7), rgba(37, 99, 235, 0.5));
+}
+
+.premium-floating-3 {
+    width: 80px;
+    height: 80px;
+    bottom: -30px;
+    left: 30%;
+    animation-delay: 4s;
+    background: radial-gradient(circle at 40% 60%, rgba(96, 165, 250, 0.7), rgba(37, 99, 235, 0.5));
+}
+
+/* Add more floating elements for enhanced 3D effect */
+.premium-floating-4 {
+    width: 60px;
+    height: 60px;
+    top: 40%;
+    left: -20px;
+    animation-delay: 1s;
+    background: radial-gradient(circle at 50% 50%, rgba(96, 165, 250, 0.7), rgba(37, 99, 235, 0.5));
+    filter: blur(15px);
+}
+
+.premium-floating-5 {
+    width: 40px;
+    height: 40px;
+    top: 20%;
+    right: 20%;
+    animation-delay: 3s;
+    background: radial-gradient(circle at 60% 40%, rgba(96, 165, 250, 0.7), rgba(37, 99, 235, 0.5));
+    filter: blur(10px);
+}
+
+/* 3D Floating Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0) translateZ(0) scale(1) rotate(0deg);
+        filter: blur(20px);
+    }
+    25% {
+        transform: translateY(-15px) translateZ(20px) scale(1.05) rotate(5deg);
+        filter: blur(15px);
+    }
+    50% {
+        transform: translateY(-25px) translateZ(30px) scale(1.1) rotate(0deg);
+        filter: blur(10px);
+    }
+    75% {
+        transform: translateY(-15px) translateZ(20px) scale(1.05) rotate(-5deg);
+        filter: blur(15px);
+    }
+    100% {
+        transform: translateY(0) translateZ(0) scale(1) rotate(0deg);
+        filter: blur(20px);
+    }
+}
+
+/* Scroll Down Indicator */
+.premium-scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: fadeInUp 1s ease-out forwards;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.premium-scroll-indicator:hover {
+    color: #fff;
+}
+
+.premium-scroll-indicator i {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+    0% { opacity: 0; transform: translateX(50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translate(-50%, 20px); }
+    100% { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .premium-hero-title {
+        font-size: 4rem;
+    }
+
+    .premium-hero-content {
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .premium-hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+    }
+
+    .premium-hero-text {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .premium-hero-title {
+        font-size: 3.5rem;
+    }
+
+    .premium-hero-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .premium-hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .premium-hero-buttons {
+        justify-content: center;
+    }
+
+    .premium-hero-image {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .premium-hero {
+        min-height: 600px;
+    }
+
+    .premium-hero-title {
+        font-size: 3rem;
+    }
+
+    .premium-hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .premium-hero-image {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    .premium-hero {
+        min-height: 500px;
+    }
+
+    .premium-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .premium-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .premium-hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .premium-btn {
+        width: 100%;
+    }
+
+    .premium-hero-image {
+        max-width: 300px;
+    }
+}

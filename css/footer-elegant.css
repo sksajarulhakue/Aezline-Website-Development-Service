@@ -1,0 +1,626 @@
+/* Elegant Footer Design - 2024 */
+.footer-elegant {
+    position: relative;
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 80px;
+}
+
+/* Decorative Elements */
+.footer-elegant::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 10%),
+        radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 15%);
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.footer-elegant::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #fc466b, #3f5efb);
+    z-index: 2;
+}
+
+.footer-elegant-container {
+    position: relative;
+    z-index: 3;
+}
+
+/* Footer Grid Layout */
+.footer-elegant-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Logo Section */
+.footer-elegant-logo-section {
+    grid-column: span 4;
+}
+
+.footer-elegant-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    text-decoration: none;
+}
+
+.footer-elegant-logo img {
+    height: 40px;
+    margin-right: 15px;
+}
+
+.footer-elegant-logo-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.footer-elegant-logo-text::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(to right, #fc466b, #3f5efb);
+}
+
+.footer-elegant-description {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 30px;
+    max-width: 90%;
+}
+
+/* Social Icons */
+.footer-elegant-social {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-elegant-social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-elegant-social-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #fc466b, #3f5efb);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.footer-elegant-social-icon:hover {
+    transform: translateY(-5px);
+}
+
+.footer-elegant-social-icon:hover::before {
+    opacity: 1;
+}
+
+/* Quick Links Section */
+.footer-elegant-links-section {
+    grid-column: span 2;
+}
+
+.footer-elegant-links-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+    color: #fff;
+}
+
+.footer-elegant-links-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(to right, #fc466b, #3f5efb);
+}
+
+.footer-elegant-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-elegant-link-item {
+    margin-bottom: 12px;
+}
+
+.footer-elegant-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+}
+
+.footer-elegant-link::before {
+    content: '→';
+    margin-right: 8px;
+    opacity: 0;
+    transform: translateX(-10px);
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.footer-elegant-link:hover {
+    color: #fff;
+    transform: translateX(5px);
+}
+
+.footer-elegant-link:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Services Section */
+.footer-elegant-services-section {
+    grid-column: span 2;
+}
+
+/* Contact Section */
+.footer-elegant-contact-section {
+    grid-column: span 4;
+}
+
+.footer-elegant-contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.footer-elegant-contact-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    margin-right: 15px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-elegant-contact-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #fc466b, #3f5efb);
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.footer-elegant-contact-icon i {
+    color: #fff;
+    font-size: 16px;
+}
+
+.footer-elegant-contact-content {
+    flex: 1;
+}
+
+.footer-elegant-contact-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.footer-elegant-contact-text {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+
+.footer-elegant-contact-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-elegant-contact-link:hover {
+    color: #fff;
+}
+
+/* Newsletter Section */
+.footer-elegant-newsletter {
+    grid-column: 1 / -1;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.footer-elegant-newsletter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(252, 70, 107, 0.05), rgba(63, 94, 251, 0.05));
+    z-index: -1;
+}
+
+.footer-elegant-newsletter-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-elegant-newsletter-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.footer-elegant-newsletter-description {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+.footer-elegant-newsletter-form {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.footer-elegant-newsletter-input-group {
+    display: flex;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px;
+}
+
+.footer-elegant-newsletter-input {
+    flex: 1;
+    height: 50px;
+    background: transparent;
+    border: none;
+    padding: 0 20px;
+    font-size: 15px;
+    color: #fff;
+    width: 100%;
+}
+
+.footer-elegant-newsletter-input:focus {
+    outline: none;
+}
+
+.footer-elegant-newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-elegant-newsletter-button {
+    height: 50px;
+    background: linear-gradient(to right, #fc466b, #3f5efb);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 0 30px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-elegant-newsletter-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(252, 70, 107, 0.3);
+}
+
+.footer-elegant-newsletter-message {
+    margin-top: 10px;
+    font-size: 14px;
+    min-height: 20px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Footer Bottom */
+.footer-elegant-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-elegant-copyright {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-elegant-bottom-links {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-elegant-bottom-link {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.footer-elegant-bottom-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(to right, #fc466b, #3f5efb);
+    transition: width 0.3s ease;
+}
+
+.footer-elegant-bottom-link:hover {
+    color: #fff;
+}
+
+.footer-elegant-bottom-link:hover::after {
+    width: 100%;
+}
+
+/* WhatsApp Button */
+.whatsapp-elegant {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-elegant::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(37, 211, 102, 0.6);
+    animation: whatsapp-pulse 2s infinite;
+    z-index: -1;
+}
+
+@keyframes whatsapp-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+.whatsapp-elegant:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .footer-elegant-grid {
+        gap: 20px;
+    }
+    
+    .footer-elegant-logo-section {
+        grid-column: span 5;
+    }
+    
+    .footer-elegant-links-section,
+    .footer-elegant-services-section {
+        grid-column: span 3;
+    }
+    
+    .footer-elegant-contact-section {
+        grid-column: span 5;
+    }
+}
+
+@media (max-width: 992px) {
+    .footer-elegant-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .footer-elegant-logo-section {
+        grid-column: span 6;
+        margin-bottom: 30px;
+    }
+    
+    .footer-elegant-links-section,
+    .footer-elegant-services-section {
+        grid-column: span 3;
+    }
+    
+    .footer-elegant-contact-section {
+        grid-column: span 6;
+        margin-top: 30px;
+    }
+    
+    .footer-elegant-newsletter {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-elegant-newsletter-form {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-elegant {
+        padding-top: 60px;
+    }
+    
+    .footer-elegant-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .footer-elegant-logo-section,
+    .footer-elegant-links-section,
+    .footer-elegant-services-section,
+    .footer-elegant-contact-section {
+        grid-column: span 1;
+        text-align: center;
+    }
+    
+    .footer-elegant-logo {
+        justify-content: center;
+    }
+    
+    .footer-elegant-logo-text::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-elegant-description {
+        max-width: 100%;
+    }
+    
+    .footer-elegant-social {
+        justify-content: center;
+    }
+    
+    .footer-elegant-links-title {
+        text-align: center;
+    }
+    
+    .footer-elegant-links-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-elegant-contact-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-elegant-contact-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .footer-elegant-newsletter {
+        padding: 30px 20px;
+    }
+    
+    .footer-elegant-newsletter-input-group {
+        flex-direction: column;
+        background: transparent;
+        padding: 0;
+    }
+    
+    .footer-elegant-newsletter-input {
+        height: 50px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .footer-elegant-newsletter-button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .footer-elegant-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-elegant-bottom-links {
+        justify-content: center;
+    }
+    
+    .whatsapp-elegant {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-elegant-newsletter {
+        padding: 25px 15px;
+    }
+}

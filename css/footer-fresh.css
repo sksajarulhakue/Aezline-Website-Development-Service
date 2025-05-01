@@ -1,0 +1,514 @@
+/* Fresh Footer Design - 2024 */
+.footer-fresh {
+    position: relative;
+    background: #111827;
+    color: rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Top Wave */
+.footer-wave-fresh {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    margin-top: -1px;
+}
+
+.footer-wave-fresh svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* Main Content */
+.footer-container {
+    position: relative;
+    z-index: 2;
+    padding: 0 0 30px;
+}
+
+/* Footer Top */
+.footer-main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 60px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+/* Logo Section */
+.footer-logo-section {
+    flex: 1;
+    min-width: 300px;
+    margin-right: 60px;
+    margin-bottom: 40px;
+}
+
+.footer-logo-link {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 24px;
+    text-decoration: none;
+}
+
+.footer-logo-img {
+    height: 40px;
+    margin-right: 12px;
+}
+
+.footer-logo-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.footer-tagline {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 30px;
+    max-width: 400px;
+}
+
+/* Social Icons */
+.footer-social {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    color: #fff;
+}
+
+.social-icon.facebook:hover {
+    background: #1877F2;
+    box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4);
+}
+
+.social-icon.twitter:hover {
+    background: #1DA1F2;
+    box-shadow: 0 5px 15px rgba(29, 161, 242, 0.4);
+}
+
+.social-icon.instagram:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    box-shadow: 0 5px 15px rgba(220, 39, 67, 0.4);
+}
+
+.social-icon.linkedin:hover {
+    background: #0A66C2;
+    box-shadow: 0 5px 15px rgba(10, 102, 194, 0.4);
+}
+
+.social-icon.whatsapp:hover {
+    background: #25D366;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+}
+
+/* Links Section */
+.footer-links-section {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-links-column {
+    flex: 1;
+    min-width: 160px;
+    margin-bottom: 30px;
+}
+
+.footer-links-title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-links-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 2px;
+    background: #3B82F6;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-link-item {
+    margin-bottom: 12px;
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+}
+
+.footer-link::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #3B82F6;
+    transition: width 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #fff;
+    transform: translateX(5px);
+}
+
+.footer-link:hover::before {
+    width: 100%;
+}
+
+/* Contact Info */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.contact-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    color: #3B82F6;
+    flex-shrink: 0;
+}
+
+.contact-text {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #fff;
+}
+
+/* Newsletter Section */
+.footer-newsletter {
+    width: 100%;
+    padding: 40px;
+    margin: 40px 0;
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.newsletter-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.newsletter-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.newsletter-description {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+.newsletter-form {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.newsletter-input-group {
+    display: flex;
+    position: relative;
+}
+
+.newsletter-input {
+    flex: 1;
+    height: 54px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0 20px;
+    font-size: 15px;
+    color: #fff;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.newsletter-input:focus {
+    outline: none;
+    border-color: #3B82F6;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.newsletter-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.newsletter-button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    height: 44px;
+    background: #3B82F6;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0 20px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.newsletter-button:hover {
+    background: #2563EB;
+    transform: translateY(-2px);
+}
+
+.newsletter-message {
+    margin-top: 10px;
+    font-size: 14px;
+    min-height: 20px;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    gap: 20px;
+}
+
+.footer-copyright {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-bottom-link {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-link:hover {
+    color: #fff;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-button {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-button::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(37, 211, 102, 0.6);
+    z-index: -1;
+    animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+.whatsapp-button:hover {
+    background: #128C7E;
+    transform: scale(1.1) translateY(-5px);
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .footer-logo-section {
+        margin-right: 40px;
+    }
+    
+    .footer-links-section {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 992px) {
+    .footer-main {
+        flex-direction: column;
+    }
+    
+    .footer-logo-section {
+        margin-right: 0;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+    
+    .footer-tagline {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+    
+    .footer-links-section {
+        justify-content: space-between;
+    }
+    
+    .footer-newsletter {
+        text-align: center;
+    }
+    
+    .newsletter-content, .newsletter-form {
+        flex: 100%;
+    }
+    
+    .newsletter-form {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-links-column {
+        min-width: 45%;
+    }
+    
+    .footer-links-title::after {
+        left: 0;
+        transform: none;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-bottom-links {
+        justify-content: center;
+    }
+    
+    .whatsapp-button {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-links-section {
+        flex-direction: column;
+    }
+    
+    .footer-links-column {
+        min-width: 100%;
+    }
+    
+    .footer-newsletter {
+        padding: 30px 20px;
+    }
+    
+    .newsletter-button {
+        position: static;
+        width: 100%;
+        margin-top: 10px;
+        height: 50px;
+    }
+    
+    .newsletter-input-group {
+        flex-direction: column;
+    }
+    
+    .newsletter-input {
+        border-radius: 8px;
+    }
+}

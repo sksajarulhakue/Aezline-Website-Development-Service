@@ -1,0 +1,192 @@
+/* Premium Contact Button Styles */
+
+/* Header Actions Container */
+.header-actions {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+/* Premium Contact Button */
+.premium-contact-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 10px 10px;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #fff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+    z-index: 10;
+}
+
+/* Icon Container */
+.contact-btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.contact-btn-icon i {
+    font-size: 1.2rem;
+}
+
+/* Text */
+.contact-btn-text {
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+/* Pulse Animation */
+.contact-btn-pulse {
+    position: absolute;
+    top: 50%;
+    left: 21px;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    z-index: 1;
+    animation: pulse 2s infinite;
+    opacity: 0;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateY(-50%) scale(1);
+        opacity: 0.7;
+    }
+    70% {
+        transform: translateY(-50%) scale(1.5);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Hover Effects */
+.premium-contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    padding-right: 25px;
+}
+
+.premium-contact-btn:hover .contact-btn-icon {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* Shine Effect */
+.premium-contact-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    20%, 100% {
+        left: 100%;
+    }
+}
+
+/* Dark Mode Support */
+body.dark-mode .premium-contact-btn {
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.5);
+}
+
+body.dark-mode .premium-contact-btn:hover {
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .header-actions {
+        margin-left: 0;
+        margin-right: 60px; /* Make room for hamburger menu */
+    }
+}
+
+@media (max-width: 768px) {
+    .premium-contact-btn {
+        padding: 8px 16px 8px 8px;
+        font-size: 0.85rem;
+    }
+    
+    .contact-btn-icon {
+        width: 28px;
+        height: 28px;
+        margin-right: 8px;
+    }
+    
+    .contact-btn-icon i {
+        font-size: 1rem;
+    }
+    
+    .contact-btn-pulse {
+        left: 18px;
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 576px) {
+    .premium-contact-btn {
+        padding: 8px;
+    }
+    
+    .contact-btn-text {
+        display: none;
+    }
+    
+    .contact-btn-icon {
+        margin-right: 0;
+    }
+    
+    .premium-contact-btn:hover {
+        padding-right: 8px;
+    }
+}
+
+/* Mobile Menu Integration */
+@media (max-width: 992px) {
+    .nav-menu.active .nav-list {
+        padding-top: 70px; /* Make room for contact button */
+    }
+    
+    .header-actions.mobile-visible {
+        position: fixed;
+        top: 15px;
+        right: 70px;
+        z-index: 1001;
+    }
+}
