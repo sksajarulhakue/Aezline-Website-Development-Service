@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Admin Connection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #3b82f6;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        .instructions {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 10px 10px 0;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #2563eb;
+        }
+        .admin-data {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .feature-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        .feature-icon {
+            font-size: 2rem;
+            color: #3b82f6;
+            margin-bottom: 15px;
+        }
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+        .feature-description {
+            color: #4b5563;
+            font-size: 0.9rem;
+        }
+        .admin-button {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+        .admin-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            opacity: 1;
+        }
+        .admin-button i {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Admin Connection</h1>
+    
+    <div class="instructions">
+        <p>This page demonstrates how the admin panel is connected to the main website.</p>
+        <p>Key features of the admin connection:</p>
+        <ul>
+            <li>Admin button on all pages for quick access to the admin panel</li>
+            <li>Secure login system using localStorage</li>
+            <li>Notification badge for unread messages</li>
+            <li>Shared data between main website and admin panel</li>
+            <li>Consistent navigation and user experience</li>
+        </ul>
+    </div>
+    
+    <a href="index.html" class="btn">Main Website</a>
+    <a href="admin/dashboard.html" class="btn">Admin Dashboard</a>
+    <a href="admin/messages.html" class="btn">Admin Messages</a>
+    <button id="show-data" class="btn">Show Admin Data</button>
+    <button id="logout-btn" class="btn" style="background-color: #ef4444;">Logout</button>
+    
+    <div id="admin-data" class="admin-data" style="display: none;"></div>
+    
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <div class="feature-title">Admin Access</div>
+            <div class="feature-description">
+                The admin button appears on all pages, providing quick access to the admin panel. Click it to log in or go directly to the dashboard if already logged in.
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="feature-title">Contact Messages</div>
+            <div class="feature-description">
+                Messages sent through the contact form are stored in localStorage and can be viewed, managed, and replied to from the admin panel.
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-image"></i>
+            </div>
+            <div class="feature-title">Banner Management</div>
+            <div class="feature-description">
+                Upload, edit, and manage banner images from the admin panel. Changes are immediately reflected on the main website.
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="feature-title">Process Steps</div>
+            <div class="feature-description">
+                Edit the website development process steps from the admin panel. Changes are immediately reflected on the main website.
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="feature-title">Dashboard Analytics</div>
+            <div class="feature-description">
+                View website analytics, activity logs, and manage all aspects of your website from a central dashboard.
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="feature-title">Notifications</div>
+            <div class="feature-description">
+                Receive notifications for new messages and other important events. A badge appears on the admin button when there are unread messages.
+            </div>
+        </div>
+    </div>
+    
+    <!-- Admin Button (for demonstration) -->
+    <div class="admin-button">
+        <i class="fas fa-user-shield"></i>
+    </div>
+    
+    <script>
+        document.getElementById('show-data').addEventListener('click', function() {
+            const adminData = document.getElementById('admin-data');
+            
+            // Get admin data from localStorage
+            const loginStatus = localStorage.getItem('adminLoggedIn') ? 'Logged In' : 'Not Logged In';
+            const dashboardData = localStorage.getItem('dashboardData');
+            const activities = localStorage.getItem('activities');
+            const messages = localStorage.getItem('contactMessages');
+            const banners = localStorage.getItem('banners');
+            const processSteps = localStorage.getItem('processSteps');
+            
+            // Format data
+            let formattedData = `Admin Login Status: ${loginStatus}\n\n`;
+            
+            if (dashboardData) {
+                formattedData += `Dashboard Data:\n${JSON.stringify(JSON.parse(dashboardData), null, 2)}\n\n`;
+            }
+            
+            if (activities) {
+                formattedData += `Recent Activities:\n${JSON.stringify(JSON.parse(activities), null, 2)}\n\n`;
+            }
+            
+            if (messages) {
+                const parsedMessages = JSON.parse(messages);
+                formattedData += `Contact Messages: ${parsedMessages.length} total\n`;
+                formattedData += `Unread Messages: ${parsedMessages.filter(m => !m.read).length}\n\n`;
+            }
+            
+            if (banners) {
+                const parsedBanners = JSON.parse(banners);
+                formattedData += `Banner Images: ${parsedBanners.length} total\n`;
+                formattedData += `Active Banners: ${parsedBanners.filter(b => b.active).length}\n\n`;
+            }
+            
+            if (processSteps) {
+                const parsedSteps = JSON.parse(processSteps);
+                formattedData += `Process Steps: ${parsedSteps.length} total\n`;
+            }
+            
+            adminData.textContent = formattedData;
+            adminData.style.display = 'block';
+        });
+        
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            localStorage.removeItem('adminLoggedIn');
+            alert('Logged out successfully!');
+            window.location.reload();
+        });
+        
+        // Admin button click
+        document.querySelector('.admin-button').addEventListener('click', function() {
+            if (localStorage.getItem('adminLoggedIn')) {
+                window.location.href = 'admin/dashboard.html';
+            } else {
+                window.location.href = 'index.html?admin=login';
+            }
+        });
+    </script>
+</body>
+</html>

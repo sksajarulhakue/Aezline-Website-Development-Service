@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio - Aezline Web Development</title>
+    <meta name="description" content="Explore our portfolio of web development projects including custom websites, WordPress sites, e-commerce solutions, and graphic design work.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/footer-theme.css">
+    <link rel="stylesheet" href="css/whatsapp-button.css">
+
+    <!-- Masonry for Portfolio Grid -->
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+</head>
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Aezline Logo" class="logo-img">
+                    <span>Aezline</span>
+                </a>
+
+                <div class="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Portfolio Header -->
+    <header class="portfolio-header">
+        <div class="portfolio-header-bg">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+        <div class="container">
+            <div class="portfolio-header-content">
+                <span class="portfolio-subtitle">OUR WORK</span>
+                <h1>Showcasing Our Creative Excellence</h1>
+                <p>Browse through our portfolio of successful projects that demonstrate our expertise in creating stunning, functional websites and digital experiences that drive results for our clients.</p>
+
+                <div class="portfolio-stats">
+                    <div class="portfolio-stat animate-on-scroll">
+                        <div class="stat-value">250+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+
+                    <div class="portfolio-stat animate-on-scroll">
+                        <div class="stat-value">180+</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+
+                    <div class="portfolio-stat animate-on-scroll">
+                        <div class="stat-value">15+</div>
+                        <div class="stat-label">Industry Awards</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Filter -->
+    <section class="portfolio-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="wordpress">WordPress</button>
+                <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                <button class="filter-btn" data-filter="design">UI/UX Design</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Gallery -->
+    <section class="portfolio-gallery">
+        <div class="container gallery-container">
+            <div class="gallery-grid">
+                <!-- Project 1 - Featured Project -->
+                <div class="gallery-item featured-project" data-category="web">
+                    <span class="featured-badge">Featured</span>
+                    <div class="gallery-image">
+                        <img src="images/portfolio/slide1.jpg" alt="Corporate Website">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Financial Consulting Firm</h3>
+                                <p>A comprehensive website redesign for a leading financial consulting firm, featuring custom dashboards, client portals, and responsive design.</p>
+                                <a href="#" class="btn" data-project="project1">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Financial Consulting Firm</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Web Development</span>
+                            <span class="project-tag">UI/UX</span>
+                            <span class="project-tag">Dashboard</span>
+                        </div>
+                        <p>A comprehensive website redesign for a leading financial consulting firm, featuring custom dashboards, client portals, and responsive design.</p>
+                        <div class="gallery-footer">
+                            <a href="#" class="view-project" data-project="project1">View Details <i class="fas fa-arrow-right"></i></a>
+                            <span class="project-category">Web Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="gallery-item" data-category="wordpress">
+                    <div class="gallery-image">
+                        <img src="images/portfolio/slide2.jpg" alt="Blog Website">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Lifestyle Blog</h3>
+                                <p>Custom WordPress theme development with advanced content management features and newsletter integration.</p>
+                                <a href="#" class="btn" data-project="project2">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Lifestyle Blog</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">WordPress</span>
+                            <span class="project-tag">Custom Theme</span>
+                        </div>
+                        <p>Custom WordPress theme with advanced content management features and newsletter integration.</p>
+                        <div class="gallery-footer">
+                            <a href="#" class="view-project" data-project="project2">View Details <i class="fas fa-arrow-right"></i></a>
+                            <span class="project-category">WordPress</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="gallery-item" data-category="ecommerce">
+                    <div class="gallery-image">
+                        <img src="images/portfolio/project3.jpg" alt="Online Store">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Fashion Boutique</h3>
+                                <p>A high-end e-commerce platform with custom product filtering, wishlist functionality, and seamless checkout experience.</p>
+                                <a href="#" class="btn" data-project="project3">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Fashion Boutique</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">E-Commerce</span>
+                            <span class="project-tag">WooCommerce</span>
+                        </div>
+                        <p>A high-end e-commerce platform with custom product filtering and seamless checkout experience.</p>
+                        <div class="gallery-footer">
+                            <a href="#" class="view-project" data-project="project3">View Details <i class="fas fa-arrow-right"></i></a>
+                            <span class="project-category">E-Commerce</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="gallery-item" data-category="design">
+                    <div class="gallery-image">
+                        <img src="images/portfolio/project4.jpg" alt="UI/UX Design">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Travel App Interface</h3>
+                                <p>Intuitive mobile app design for a travel platform, featuring interactive maps, booking system, and personalized recommendations.</p>
+                                <a href="#" class="btn" data-project="project4">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Travel App Interface</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">UI/UX Design</span>
+                            <span class="project-tag">Mobile App</span>
+                        </div>
+                        <p>Intuitive mobile app design for a travel platform with interactive maps and booking system.</p>
+                        <div class="gallery-footer">
+                            <a href="#" class="view-project" data-project="project4">View Details <i class="fas fa-arrow-right"></i></a>
+                            <span class="project-category">UI/UX Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="gallery-item" data-category="branding">
+                    <div class="gallery-image">
+                        <img src="images/portfolio/project5.jpg" alt="Brand Identity">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Organic Food Brand</h3>
+                                <p>Complete brand identity design including logo, packaging, marketing materials, and brand guidelines for an organic food company.</p>
+                                <a href="#" class="btn" data-project="project5">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Organic Food Brand</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Branding</span>
+                            <span class="project-tag">Packaging</span>
+                        </div>
+                        <p>Complete brand identity design including logo, packaging, and marketing materials.</p>
+                        <div class="gallery-footer">
+                            <a href="#" class="view-project" data-project="project5">View Details <i class="fas fa-arrow-right"></i></a>
+                            <span class="project-category">Branding</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="gallery-item" data-category="web">
+                    <div class="gallery-image">
+                        <img src="images/portfolio/project6.jpg" alt="Real Estate Website">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Luxury Real Estate</h3>
+                                <p>Premium real estate website with property search, virtual tours, and client management system for high-end properties.</p>
+                                <a href="#" class="btn" data-project="project6">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Luxury Real Estate</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Web Development</span>
+                            <span class="project-tag">Property Search</span>
+                        </div>
+                        <p>Premium real estate website with property search and virtual tours for high-end properties.</p>
+                        <div class="gallery-footer">
+                            <a href="#" class="view-project" data-project="project6">View Details <i class="fas fa-arrow-right"></i></a>
+                            <span class="project-category">Web Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="gallery-item" data-category="wordpress">
+                    <div class="gallery-image">
+                        <img src="images/portfolio/project7.jpg" alt="News Portal">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Tech News Portal</h3>
+                                <p>High-traffic WordPress news portal with custom content management, subscription system, and advanced categorization.</p>
+                                <a href="#" class="btn" data-project="project7">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Tech News Portal</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">WordPress</span>
+                            <span class="project-tag">News</span>
+                        </div>
+                        <p>High-traffic WordPress news portal with custom content management and subscription system.</p>
+                        <div class="gallery-footer">
+                            <a href="#" class="view-project" data-project="project7">View Details <i class="fas fa-arrow-right"></i></a>
+                            <span class="project-category">WordPress</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="gallery-item" data-category="ecommerce">
+                    <div class="gallery-image">
+                        <img src="images/portfolio/project8.jpg" alt="Electronics Store">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Electronics Marketplace</h3>
+                                <p>Multi-vendor electronics marketplace with product comparison, review system, and advanced filtering options.</p>
+                                <a href="#" class="btn" data-project="project8">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Electronics Marketplace</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">E-Commerce</span>
+                            <span class="project-tag">Multi-vendor</span>
+                        </div>
+                        <p>Multi-vendor electronics marketplace with product comparison and review system.</p>
+                        <div class="gallery-footer">
+                            <a href="#" class="view-project" data-project="project8">View Details <i class="fas fa-arrow-right"></i></a>
+                            <span class="project-category">E-Commerce</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="gallery-item" data-category="design">
+                    <div class="gallery-image">
+                        <img src="images/portfolio/project9.jpg" alt="Mobile App Design">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Fitness Tracking App</h3>
+                                <p>Comprehensive fitness app UI/UX design with workout tracking, nutrition planning, and progress visualization features.</p>
+                                <a href="#" class="btn" data-project="project9">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Fitness Tracking App</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">UI/UX Design</span>
+                            <span class="project-tag">Mobile App</span>
+                        </div>
+                        <p>Comprehensive fitness app UI/UX design with workout tracking and progress visualization.</p>
+                        <div class="gallery-footer">
+                            <a href="#" class="view-project" data-project="project9">View Details <i class="fas fa-arrow-right"></i></a>
+                            <span class="project-category">UI/UX Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 10 -->
+                <div class="gallery-item" data-category="branding">
+                    <div class="gallery-image">
+                        <img src="images/portfolio/project10.jpg" alt="Restaurant Branding">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Italian Restaurant</h3>
+                                <p>Complete restaurant branding including logo design, menu design, interior signage, and marketing collateral.</p>
+                                <a href="#" class="btn" data-project="project10">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Italian Restaurant</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Branding</span>
+                            <span class="project-tag">Menu Design</span>
+                        </div>
+                        <p>Complete restaurant branding including logo design, menu design, and marketing collateral.</p>
+                        <div class="gallery-footer">
+                            <a href="#" class="view-project" data-project="project10">View Details <i class="fas fa-arrow-right"></i></a>
+                            <span class="project-category">Branding</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 11 -->
+                <div class="gallery-item" data-category="web">
+                    <div class="gallery-image">
+                        <img src="images/portfolio/project11.jpg" alt="Educational Platform">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Online Learning Platform</h3>
+                                <p>Educational platform with course management, student progress tracking, and interactive learning materials.</p>
+                                <a href="#" class="btn" data-project="project11">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Online Learning Platform</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Web Development</span>
+                            <span class="project-tag">E-Learning</span>
+                        </div>
+                        <p>Educational platform with course management and interactive learning materials.</p>
+                        <div class="gallery-footer">
+                            <a href="#" class="view-project" data-project="project11">View Details <i class="fas fa-arrow-right"></i></a>
+                            <span class="project-category">Web Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 12 -->
+                <div class="gallery-item" data-category="ecommerce">
+                    <div class="gallery-image">
+                        <img src="images/portfolio/project12.jpg" alt="Furniture Store">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content">
+                                <h3>Modern Furniture Store</h3>
+                                <p>Premium furniture e-commerce site with 3D product visualization, room planner, and customization options.</p>
+                                <a href="#" class="btn" data-project="project12">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Modern Furniture Store</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">E-Commerce</span>
+                            <span class="project-tag">3D Visualization</span>
+                        </div>
+                        <p>Premium furniture e-commerce site with 3D product visualization and room planner.</p>
+                        <div class="gallery-footer">
+                            <a href="#" class="view-project" data-project="project12">View Details <i class="fas fa-arrow-right"></i></a>
+                            <span class="project-category">E-Commerce</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modals -->
+    <!-- Project 1 Modal -->
+    <div class="project-modal" id="project1-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Financial Consulting Firm</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-gallery">
+                    <img src="images/portfolio/project1.jpg" alt="Financial Consulting Firm Website">
+                    <!-- Additional project images would go here -->
+                </div>
+                <div class="project-details">
+                    <div class="project-info">
+                        <h3>Project Overview</h3>
+                        <p>A modern corporate website designed for a financial consulting firm. The site features a clean, professional design with intuitive navigation and interactive elements that enhance user engagement. The client needed a platform that would showcase their expertise while providing valuable resources to potential clients.</p>
+
+                        <h3>Technologies Used</h3>
+                        <ul class="tech-stack">
+                            <li><i class="fas fa-check-circle"></i> HTML5</li>
+                            <li><i class="fas fa-check-circle"></i> CSS3/SASS</li>
+                            <li><i class="fas fa-check-circle"></i> JavaScript/jQuery</li>
+                            <li><i class="fas fa-check-circle"></i> React.js</li>
+                            <li><i class="fas fa-check-circle"></i> Node.js</li>
+                            <li><i class="fas fa-check-circle"></i> MongoDB</li>
+                            <li><i class="fas fa-check-circle"></i> Webpack</li>
+                            <li><i class="fas fa-check-circle"></i> Responsive Design</li>
+                        </ul>
+
+                        <h3>Project Features</h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Responsive design</li>
+                            <li><i class="fas fa-check-circle"></i> Interactive financial calculator</li>
+                            <li><i class="fas fa-check-circle"></i> Team member profiles</li>
+                            <li><i class="fas fa-check-circle"></i> Blog section with filtering</li>
+                            <li><i class="fas fa-check-circle"></i> Client testimonials carousel</li>
+                            <li><i class="fas fa-check-circle"></i> Contact form with validation</li>
+                            <li><i class="fas fa-check-circle"></i> Custom admin dashboard</li>
+                            <li><i class="fas fa-check-circle"></i> SEO optimization</li>
+                        </ul>
+
+                        <h3>Project Results</h3>
+                        <p>After launching the new website, the client saw a 45% increase in lead generation and a 30% improvement in user engagement metrics. The website's modern design and intuitive interface helped establish the firm as a technology-forward leader in their industry.</p>
+                    </div>
+
+                    <div class="project-cta">
+                        <a href="#" class="btn btn-primary" target="_blank">Visit Website</a>
+                        <a href="#" class="btn btn-secondary quote-btn">Start Similar Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 2 Modal -->
+    <div class="project-modal" id="project2-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Lifestyle Blog</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-gallery">
+                    <img src="images/portfolio/project2.jpg" alt="Lifestyle Blog Website">
+                    <!-- Additional project images would go here -->
+                </div>
+                <div class="project-details">
+                    <div class="project-info">
+                        <h3>Project Overview</h3>
+                        <p>A modern lifestyle blog built on WordPress for a popular content creator. The site features a clean, minimalist design with a focus on content readability and user engagement. The client needed a platform that would showcase their articles, photography, and videos in an elegant and user-friendly manner.</p>
+
+                        <h3>Technologies Used</h3>
+                        <ul class="tech-stack">
+                            <li><i class="fas fa-check-circle"></i> WordPress</li>
+                            <li><i class="fas fa-check-circle"></i> Custom Theme Development</li>
+                            <li><i class="fas fa-check-circle"></i> PHP</li>
+                            <li><i class="fas fa-check-circle"></i> JavaScript/jQuery</li>
+                            <li><i class="fas fa-check-circle"></i> CSS3/SASS</li>
+                            <li><i class="fas fa-check-circle"></i> Responsive Design</li>
+                            <li><i class="fas fa-check-circle"></i> Advanced Custom Fields</li>
+                            <li><i class="fas fa-check-circle"></i> WooCommerce Integration</li>
+                        </ul>
+
+                        <h3>Project Features</h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Custom post types for different content</li>
+                            <li><i class="fas fa-check-circle"></i> Advanced category filtering</li>
+                            <li><i class="fas fa-check-circle"></i> Newsletter integration</li>
+                            <li><i class="fas fa-check-circle"></i> Social media sharing</li>
+                            <li><i class="fas fa-check-circle"></i> Related posts functionality</li>
+                            <li><i class="fas fa-check-circle"></i> E-commerce shop for digital products</li>
+                            <li><i class="fas fa-check-circle"></i> Custom admin dashboard</li>
+                            <li><i class="fas fa-check-circle"></i> SEO optimization</li>
+                        </ul>
+
+                        <h3>Project Results</h3>
+                        <p>After launching the new blog, the client experienced a 60% increase in page views and a 40% increase in average time on site. The improved user experience and content organization led to higher engagement rates and a significant growth in newsletter subscribers.</p>
+                    </div>
+
+                    <div class="project-cta">
+                        <a href="#" class="btn btn-primary" target="_blank">Visit Website</a>
+                        <a href="#" class="btn btn-secondary quote-btn">Start Similar Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional project modals would follow the same structure -->
+
+    <!-- Portfolio CTA Section -->
+    <section class="portfolio-cta">
+        <div class="container">
+            <div class="portfolio-cta-content">
+                <h2>Ready to Transform Your Digital Presence?</h2>
+                <p>Let's collaborate to create a stunning website that perfectly represents your brand and drives results.</p>
+                <a href="#" class="btn quote-btn">Get a Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theme-Matching Footer 2024 -->
+    <footer class="footer-theme" id="footer">
+        <div class="container footer-theme-container">
+            <div class="footer-theme-content">
+                <!-- Info Section -->
+                <div class="footer-theme-info">
+                    <a href="index.html" class="footer-theme-logo">
+                        <img src="images/logo-white.png" alt="Aezline Logo">
+                        <span>Aezline</span>
+                    </a>
+                    <p>Premium web development services creating stunning, functional websites for businesses. Quality, innovation, and exceptional user experiences.</p>
+                    <div class="footer-theme-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/917076529970" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-theme-nav">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-theme-nav">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">WordPress Development</a></li>
+                        <li><a href="services.html">E-Commerce Solutions</a></li>
+                        <li><a href="services.html">Graphic Design</a></li>
+                        <li><a href="services.html">SEO Services</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-theme-nav">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-theme-contact">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+91 7076529970</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@aezline.com</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/917076529970" target="_blank">Chat on WhatsApp</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Newsletter Section -->
+            <div class="footer-theme-newsletter">
+                <div class="footer-theme-newsletter-content">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p>Stay updated with our latest news and exclusive offers.</p>
+                </div>
+                <form class="footer-theme-newsletter-form" id="footer-newsletter-form">
+                    <div class="footer-theme-newsletter-input-group">
+                        <input type="email" class="footer-theme-newsletter-input" id="footer-newsletter-email" placeholder="Enter your email address" required>
+                        <button type="submit" class="footer-theme-newsletter-button">Subscribe <i class="fas fa-paper-plane"></i></button>
+                    </div>
+                    <div class="footer-theme-newsletter-message" id="footer-newsletter-message"></div>
+                </form>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-theme-bottom">
+                <div class="footer-theme-copyright">
+                    &copy; 2025 Aezline. All Rights Reserved. Founded in 2025, first client in 2024.
+                </div>
+                <div class="footer-theme-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Floating Button is now created via JavaScript -->
+    </footer>
+
+    <!-- Quote Form Popup -->
+    <div class="popup-overlay" id="quote-popup">
+        <div class="popup-container">
+            <div class="popup-header">
+                <h3>Request a Quote</h3>
+                <button class="close-popup"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="popup-body">
+                <form class="quote-form" id="quote-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a Service</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="wordpress">WordPress Development</option>
+                            <option value="ecommerce">E-Commerce Solutions</option>
+                            <option value="landing-pages">Landing Pages</option>
+                            <option value="graphic-design">Graphic Design</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Budget Range</label>
+                        <select id="budget" name="budget">
+                            <option value="">Select Budget Range</option>
+                            <option value="less-than-1000">Less than $1,000</option>
+                            <option value="1000-3000">$1,000 - $3,000</option>
+                            <option value="3000-5000">$3,000 - $5,000</option>
+                            <option value="5000-10000">$5,000 - $10,000</option>
+                            <option value="more-than-10000">More than $10,000</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/darkmode.js"></script>
+    <script src="js/portfolio.js"></script>
+    <script src="js/settings-api.js"></script>
+    <script src="js/admin-api.js"></script>
+    <script src="js/whatsapp-button.js"></script>
+</body>
+</html>

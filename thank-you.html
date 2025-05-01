@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Aezline</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/footer-theme.css">
+    <link rel="stylesheet" href="css/process.css">
+    <link rel="stylesheet" href="css/newsletter.css">
+    
+    <style>
+        .thank-you-section {
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .thank-you-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 30px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .thank-you-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #25D366;
+        }
+        
+        .thank-you-icon {
+            font-size: 80px;
+            color: #25D366;
+            margin-bottom: 30px;
+        }
+        
+        .thank-you-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .thank-you-message {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .thank-you-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .thank-you-btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .thank-you-btn i {
+            margin-right: 8px;
+        }
+        
+        .home-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .home-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+        }
+        
+        /* Dark Mode Support */
+        body.dark-mode .thank-you-container {
+            background: #222;
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        body.dark-mode .thank-you-title {
+            color: #fff;
+        }
+        
+        body.dark-mode .thank-you-message {
+            color: #aaa;
+        }
+        
+        @media (max-width: 576px) {
+            .thank-you-buttons {
+                flex-direction: column;
+            }
+            
+            .thank-you-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Aezline Logo" class="logo-img">
+                    <span>Aezline</span>
+                </a>
+
+                <div class="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Thank You Section -->
+    <section class="thank-you-section">
+        <div class="container">
+            <div class="thank-you-container">
+                <div class="thank-you-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1 class="thank-you-title">Thank You!</h1>
+                <p class="thank-you-message">Your message has been sent successfully. We've received your information and will get back to you as soon as possible.</p>
+                <div class="thank-you-buttons">
+                    <a href="index.html" class="thank-you-btn home-btn">
+                        <i class="fas fa-home"></i> Back to Home
+                    </a>
+                    <a href="https://wa.me/917076529970" class="thank-you-btn whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theme-Matching Footer 2024 -->
+    <footer class="footer-theme" id="footer">
+        <div class="container footer-theme-container">
+            <div class="footer-theme-content">
+                <!-- Info Section -->
+                <div class="footer-theme-info">
+                    <a href="index.html" class="footer-theme-logo">
+                        <img src="images/logo-white.png" alt="Aezline Logo">
+                        <span>Aezline</span>
+                    </a>
+                    <p>Premium web development services creating stunning, functional websites for businesses. Quality, innovation, and exceptional user experiences.</p>
+                    <div class="footer-theme-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/917076529970" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-theme-nav">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-theme-nav">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">WordPress Development</a></li>
+                        <li><a href="services.html">E-Commerce Solutions</a></li>
+                        <li><a href="services.html">Graphic Design</a></li>
+                        <li><a href="services.html">SEO Services</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-theme-nav">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-theme-contact">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+91 7076529970</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>Aezline@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/917076529970" target="_blank">Chat on WhatsApp</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-theme-bottom">
+                <div class="footer-theme-copyright">
+                    &copy; 2025 Aezline. All Rights Reserved. Founded in 2025, first client in 2024.
+                </div>
+                <div class="footer-theme-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/917076529970" class="whatsapp-theme" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/whatsapp-button.js"></script>
+</body>
+</html>

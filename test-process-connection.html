@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Process Connection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #3b82f6;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        .instructions {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 10px 10px 0;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #2563eb;
+        }
+        .process-data {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Process Connection</h1>
+    
+    <div class="instructions">
+        <p>This page demonstrates how the admin process editor is connected to the main website through localStorage.</p>
+        <p>Follow these steps to test the connection:</p>
+        <ol>
+            <li>Open the admin process editor and make changes to one or more process steps</li>
+            <li>Save your changes</li>
+            <li>Open the main website and navigate to the process section to see your changes</li>
+            <li>Use the buttons below to view the current process data in localStorage</li>
+        </ol>
+    </div>
+    
+    <a href="admin/process-editor.html" class="btn">Open Process Editor</a>
+    <a href="index.html#process" class="btn">View Main Website</a>
+    <button id="show-data" class="btn">Show Current Process Data</button>
+    
+    <div id="process-data" class="process-data" style="display: none;"></div>
+    
+    <script>
+        document.getElementById('show-data').addEventListener('click', function() {
+            const processData = document.getElementById('process-data');
+            const savedSteps = localStorage.getItem('processSteps');
+            
+            if (savedSteps) {
+                // Format the JSON for better readability
+                const formattedJson = JSON.stringify(JSON.parse(savedSteps), null, 2);
+                processData.textContent = formattedJson;
+                processData.style.display = 'block';
+            } else {
+                processData.textContent = 'No process data found in localStorage. Please open the admin process editor first.';
+                processData.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

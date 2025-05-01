@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Banner Connection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #3b82f6;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        .instructions {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 10px 10px 0;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #2563eb;
+        }
+        .banner-data {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        .banner-preview {
+            margin-top: 20px;
+            border: 1px solid #e5e7eb;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .banner-preview img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .banner-preview-title {
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Banner Connection</h1>
+    
+    <div class="instructions">
+        <p>This page demonstrates how the admin banner manager is connected to the main website through localStorage.</p>
+        <p>Follow these steps to test the connection:</p>
+        <ol>
+            <li>Open the admin banner manager and make changes to banners (upload, edit, or delete)</li>
+            <li>Make sure to mark banners as "Active" if you want them to appear on the website</li>
+            <li>Open the main website to see your changes</li>
+            <li>Use the buttons below to view the current banner data in localStorage</li>
+        </ol>
+    </div>
+    
+    <a href="admin/banner-manager.html" class="btn">Open Banner Manager</a>
+    <a href="index.html" class="btn">View Main Website</a>
+    <button id="show-data" class="btn">Show Current Banner Data</button>
+    <button id="show-preview" class="btn">Show Banner Preview</button>
+    
+    <div id="banner-data" class="banner-data" style="display: none;"></div>
+    <div id="banner-preview" class="banner-preview" style="display: none;"></div>
+    
+    <script>
+        document.getElementById('show-data').addEventListener('click', function() {
+            const bannerData = document.getElementById('banner-data');
+            const savedBanners = localStorage.getItem('banners');
+            
+            if (savedBanners) {
+                // Format the JSON for better readability
+                const formattedJson = JSON.stringify(JSON.parse(savedBanners), null, 2);
+                bannerData.textContent = formattedJson;
+                bannerData.style.display = 'block';
+                
+                // Hide preview if showing
+                document.getElementById('banner-preview').style.display = 'none';
+            } else {
+                bannerData.textContent = 'No banner data found in localStorage. Please open the admin banner manager first.';
+                bannerData.style.display = 'block';
+            }
+        });
+        
+        document.getElementById('show-preview').addEventListener('click', function() {
+            const bannerPreview = document.getElementById('banner-preview');
+            const savedBanners = localStorage.getItem('banners');
+            
+            if (savedBanners) {
+                const banners = JSON.parse(savedBanners);
+                const activeBanners = banners.filter(banner => banner.active);
+                
+                if (activeBanners.length > 0) {
+                    // Clear previous preview
+                    bannerPreview.innerHTML = '';
+                    
+                    // Show active banners
+                    activeBanners.forEach(banner => {
+                        const container = document.createElement('div');
+                        container.style.marginBottom = '20px';
+                        
+                        const img = document.createElement('img');
+                        img.src = banner.image;
+                        img.alt = banner.alt;
+                        
+                        const title = document.createElement('div');
+                        title.className = 'banner-preview-title';
+                        title.textContent = banner.title;
+                        
+                        container.appendChild(img);
+                        container.appendChild(title);
+                        bannerPreview.appendChild(container);
+                    });
+                    
+                    bannerPreview.style.display = 'block';
+                    
+                    // Hide data if showing
+                    document.getElementById('banner-data').style.display = 'none';
+                } else {
+                    bannerPreview.innerHTML = '<p>No active banners found. Please make sure at least one banner is marked as "Active" in the banner manager.</p>';
+                    bannerPreview.style.display = 'block';
+                }
+            } else {
+                bannerPreview.innerHTML = '<p>No banner data found in localStorage. Please open the admin banner manager first.</p>';
+                bannerPreview.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

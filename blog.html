@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Aezline</title>
+    <meta name="description" content="Read the latest articles, tutorials, and insights about web development, design trends, and digital marketing.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/blog-simple.css">
+    <link rel="stylesheet" href="css/footer-theme.css">
+    <link rel="stylesheet" href="css/whatsapp-button.css">
+</head>
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.png" alt="Aezline Logo" class="logo-img">
+                    <span>Aezline</span>
+                </a>
+
+                <div class="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link active">Blog</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <div class="banner-content">
+                <h1>Blog</h1>
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a> / <span>Blog</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="blog-container">
+            <!-- Blog Header -->
+            <div class="blog-header">
+                <h1>Web Development Insights</h1>
+                <p>In-depth articles on web development, design principles, and digital strategies to help you build a better online presence.</p>
+            </div>
+
+            <!-- Blog Articles -->
+            <div class="blog-articles">
+                <!-- Article 1 -->
+                <article class="blog-article">
+                    <header class="article-header">
+                        <h2 class="article-title">The Critical Role of Web Performance in User Experience and SEO</h2>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> April 15, 2024</span>
+                            <span><i class="far fa-clock"></i> 8 min read</span>
+                        </div>
+                    </header>
+                    <div class="article-image">
+                        <img src="https://via.placeholder.com/800x500/f3f4f6/1f2937?text=Web+Performance" alt="Web Performance Optimization">
+                    </div>
+                    <div class="article-content">
+                        <p>Website performance has evolved from a technical consideration to a critical business factor that directly impacts user experience, conversion rates, and search engine rankings. In today's fast-paced digital environment, users expect websites to load almost instantaneously, with studies showing that 53% of mobile users abandon sites that take longer than three seconds to load.</p>
+
+                        <p>Google's Core Web Vitals have formalized performance metrics as ranking factors, making optimization not just a user experience concern but an SEO necessity. These metrics focus on loading performance (Largest Contentful Paint), interactivity (First Input Delay), and visual stability (Cumulative Layout Shift).</p>
+
+                        <h3>Key Performance Optimization Strategies:</h3>
+
+                        <ul>
+                            <li><strong>Image Optimization:</strong> Implement proper sizing, compression, and modern formats like WebP. Consider lazy loading for images below the fold.</li>
+                            <li><strong>Code Minification:</strong> Remove unnecessary characters from HTML, CSS, and JavaScript without changing functionality.</li>
+                            <li><strong>Efficient Resource Loading:</strong> Prioritize critical CSS, defer non-essential JavaScript, and implement resource hints like preconnect and preload.</li>
+                            <li><strong>Caching Strategy:</strong> Implement browser caching with appropriate cache-control headers and leverage CDNs for global performance.</li>
+                            <li><strong>Server-side Optimization:</strong> Upgrade hosting infrastructure, implement HTTP/2 or HTTP/3, and consider edge computing solutions.</li>
+                        </ul>
+
+                        <p>Performance optimization should be an ongoing process rather than a one-time effort. Regular auditing using tools like Lighthouse, WebPageTest, and Google's PageSpeed Insights can help identify bottlenecks and opportunities for improvement.</p>
+                    </div>
+                    <a href="#" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-article">
+                    <header class="article-header">
+                        <h2 class="article-title">Designing for Accessibility: Creating Inclusive Web Experiences</h2>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> April 8, 2024</span>
+                            <span><i class="far fa-clock"></i> 7 min read</span>
+                        </div>
+                    </header>
+                    <div class="article-image">
+                        <img src="https://via.placeholder.com/800x500/f3f4f6/1f2937?text=Accessibility" alt="Web Accessibility Design">
+                    </div>
+                    <div class="article-content">
+                        <p>Web accessibility is not merely a compliance checkbox but a fundamental aspect of ethical web development that ensures digital experiences are available to everyone, regardless of their abilities or disabilities. With over one billion people worldwide living with some form of disability, designing accessible websites is both a social responsibility and a business imperative.</p>
+
+                        <p>The Web Content Accessibility Guidelines (WCAG) provide a comprehensive framework for creating accessible content, organized around four principles: perceivable, operable, understandable, and robust. Meeting these guidelines not only serves users with disabilities but improves the experience for all users.</p>
+
+                        <h3>Essential Accessibility Considerations:</h3>
+
+                        <ul>
+                            <li><strong>Semantic HTML:</strong> Properly structured content using appropriate HTML elements provides meaning and context for assistive technologies.</li>
+                            <li><strong>Keyboard Navigation:</strong> Ensure all interactive elements are accessible without a mouse, with visible focus states and logical tab order.</li>
+                            <li><strong>Color Contrast:</strong> Maintain sufficient contrast ratios between text and background colors (minimum 4.5:1 for normal text, 3:1 for large text).</li>
+                            <li><strong>Alternative Text:</strong> Provide descriptive alt text for images that conveys their purpose and content.</li>
+                            <li><strong>ARIA Attributes:</strong> Use ARIA roles and properties judiciously to enhance accessibility when HTML semantics are insufficient.</li>
+                        </ul>
+
+                        <p>Accessibility testing should incorporate both automated tools and manual testing. Automated tools can identify many technical issues, but human evaluation is essential for assessing the actual user experience. Including people with disabilities in your testing process provides invaluable insights.</p>
+                    </div>
+                    <a href="#" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="blog-article">
+                    <header class="article-header">
+                        <h2 class="article-title">Modern JavaScript Frameworks: Choosing the Right Tool for Your Project</h2>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> March 30, 2024</span>
+                            <span><i class="far fa-clock"></i> 10 min read</span>
+                        </div>
+                    </header>
+                    <div class="article-image">
+                        <img src="https://via.placeholder.com/800x500/f3f4f6/1f2937?text=JavaScript+Frameworks" alt="JavaScript Frameworks Comparison">
+                    </div>
+                    <div class="article-content">
+                        <p>The JavaScript ecosystem continues to evolve rapidly, offering developers an expanding array of frameworks and libraries for building modern web applications. While this abundance of choice provides flexibility, it also creates the challenge of selecting the most appropriate tool for specific project requirements.</p>
+
+                        <p>Each framework has distinct philosophies, architectures, and trade-offs that make them better suited for particular use cases. Understanding these differences is crucial for making informed decisions that align with your project goals, team expertise, and long-term maintenance considerations.</p>
+
+                        <h3>Comparative Analysis of Leading Frameworks:</h3>
+
+                        <h4>React</h4>
+                        <p>React's component-based architecture and virtual DOM have made it the most widely adopted framework. Its strength lies in its flexibility and extensive ecosystem. React excels in single-page applications and projects that prioritize component reusability. The introduction of hooks and the Context API has simplified state management, though larger applications may still benefit from solutions like Redux or Zustand.</p>
+
+                        <h4>Vue.js</h4>
+                        <p>Vue offers an approachable learning curve while providing powerful capabilities. Its template-based syntax feels familiar to developers with HTML experience, and its reactivity system efficiently manages updates. Vue 3's Composition API addresses many of the scaling challenges faced in complex applications. Vue is particularly well-suited for projects where progressive enhancement is desired.</p>
+
+                        <p>When selecting a framework, consider factors beyond technical features: community size and activity, learning resources, hiring pool, long-term maintenance, and migration paths. The best choice balances immediate project needs with sustainable development practices.</p>
+                    </div>
+                    <a href="#" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="blog-pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <span class="page-dots">...</span>
+                <a href="#" class="page-link">5</a>
+                <a href="#" class="page-link"><i class="fas fa-angle-right"></i></a>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="blog-cta">
+                <h2>Need Help With Your Website?</h2>
+                <p>Let's discuss your project and create a website that perfectly represents your brand and meets your business goals.</p>
+                <a href="https://wa.me/917076529970" target="_blank" class="cta-button"><i class="fab fa-whatsapp"></i> Contact on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Need Help With Your Website?</h2>
+                <p>Let's discuss your project and create a website that perfectly represents your brand.</p>
+                <a href="https://wa.me/917076529970" target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Contact on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theme-Matching Footer 2024 -->
+    <footer class="footer-theme" id="footer">
+        <div class="container footer-theme-container">
+            <div class="footer-theme-content">
+                <!-- Info Section -->
+                <div class="footer-theme-info">
+                    <a href="index.html" class="footer-theme-logo">
+                        <img src="images/logo-white.png" alt="Aezline Logo">
+                        <span>Aezline</span>
+                    </a>
+                    <p>Premium web development services creating stunning, functional websites for businesses. Quality, innovation, and exceptional user experiences.</p>
+                    <div class="footer-theme-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/917076529970" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-theme-nav">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-theme-nav">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">WordPress Development</a></li>
+                        <li><a href="services.html">E-Commerce Solutions</a></li>
+                        <li><a href="services.html">Graphic Design</a></li>
+                        <li><a href="services.html">SEO Services</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-theme-nav">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-theme-contact">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+91 7076529970</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@aezline.com</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/917076529970" target="_blank">Chat on WhatsApp</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Newsletter Section -->
+            <div class="footer-theme-newsletter">
+                <div class="footer-theme-newsletter-content">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p>Stay updated with our latest news and exclusive offers.</p>
+                </div>
+                <form class="footer-theme-newsletter-form" id="footer-newsletter-form">
+                    <div class="footer-theme-newsletter-input-group">
+                        <input type="email" class="footer-theme-newsletter-input" id="footer-newsletter-email" placeholder="Enter your email address" required>
+                        <button type="submit" class="footer-theme-newsletter-button">Subscribe <i class="fas fa-paper-plane"></i></button>
+                    </div>
+                    <div class="footer-theme-newsletter-message" id="footer-newsletter-message"></div>
+                </form>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-theme-bottom">
+                <div class="footer-theme-copyright">
+                    &copy; 2025 Aezline. All Rights Reserved. Founded in 2025, first client in 2024.
+                </div>
+                <div class="footer-theme-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Floating Button is now created via JavaScript -->
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/darkmode.js"></script>
+    <script src="js/whatsapp-button.js"></script>
+    <script src="js/blog-expand.js"></script>
+    <script src="js/page-tracker.js"></script>
+    <script src="js/newsletter-api.js"></script>
+</body>
+</html>
